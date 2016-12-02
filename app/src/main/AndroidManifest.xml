@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.apuritobokuto.healmane">
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Health"
+                    android:label="健康管理">
+        </activity>
+        <activity android:name=".Menu"
+                    android:label="メニュー一覧">
+        </activity>
+        <activity android:name=".MenuCh"
+            android:label="メニューカテゴリ選択">
+        </activity>
+        <activity android:name=".MenuLi"
+            android:label="メニュー選択">
+        </activity>
+        <activity android:name=".MenuDe"
+            android:label="メニュー詳細">
+        </activity>
+
+    </application>
+
+</manifest>
