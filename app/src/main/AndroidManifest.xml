@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/test"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -17,13 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Health"
+        <activity android:name=".cl_healthManage"
                     android:label="健康管理">
         </activity>
-        <activity android:name=".Menu"
+        <activity android:name=".cl_menuSelect"
                     android:label="メニュー一覧">
         </activity>
-        <activity android:name=".MenuCh"
+        <activity android:name=".cl_menuSelect_Category"
             android:label="メニューカテゴリ選択">
         </activity>
         <activity android:name=".MenuLi"

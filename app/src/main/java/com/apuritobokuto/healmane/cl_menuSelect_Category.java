@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.os.AsyncTask;
 
 
-public class MenuCh extends Activity{
+public class cl_menuSelect_Category extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
