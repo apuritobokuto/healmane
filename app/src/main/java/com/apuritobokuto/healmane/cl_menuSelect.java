@@ -10,7 +10,7 @@ import android.widget.Button;
  * Created by Ryu on 2016/11/17.
  */
 
-public class Menu extends Activity {
+public class cl_menuSelect extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ public class Menu extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), MenuCh.class);
+                Intent intent = new Intent(getApplication(), cl_menuSelect_Category.class);
                 startActivity(intent);
             }
         });

@@ -21,8 +21,10 @@ public class MenuDe extends Activity{
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), Menu.class);
+                Intent intent = new Intent(getApplication(), cl_menuSelect.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                /**finish();**/
             }
         });
 

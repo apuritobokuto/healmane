@@ -11,7 +11,7 @@ import java.lang.reflect.AccessibleObject;
  * Created by Ryu on 2016/11/16.
  */
 
-public class Health extends Activity {
+public class cl_healthManage extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

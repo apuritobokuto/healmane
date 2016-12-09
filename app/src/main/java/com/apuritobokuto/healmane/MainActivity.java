@@ -1,19 +1,12 @@
 package com.apuritobokuto.healmane;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.DriverManager;
-import android.widget.TextView;
-import android.os.AsyncTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         health.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getApplication(),Health.class);
+                Intent intent =new Intent(getApplication(),cl_healthManage.class);
                 startActivity(intent);
             }
         });
@@ -36,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         menu.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getApplication(),Menu.class);
+                Intent intent =new Intent(getApplication(),cl_menuSelect.class);
                 startActivity(intent);
             }
         });
