@@ -32,6 +32,13 @@
         <activity android:name=".MenuDe"
             android:label="メニュー詳細">
         </activity>
+        <activity android:name=".cl_setting"
+            android:label="設定">
+        </activity>
+        <activity android:name=".cl_settingsAllergy"
+            android:label="アレルギー設定">
+        </activity>
+
 
     </application>
 
