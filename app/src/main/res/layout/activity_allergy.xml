@@ -16,7 +16,7 @@
             android:layout_weight="1" />
 
         <Button
-            android:text="Button"
+            android:text="保存"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button8"
@@ -30,240 +30,282 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="卵"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox5" />
+                android:id="@+id/checkBox5"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="さけ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox4" />
+                android:id="@+id/checkBox4"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="乳"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox6" />
+                android:id="@+id/checkBox6"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="さば"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox7" />
+                android:id="@+id/checkBox7"
+                android:layout_weight="0.5"/>
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="小麦"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox8" />
+                android:id="@+id/checkBox8"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="大豆"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox10" />
+                android:id="@+id/checkBox10"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="えび"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox11" />
+                android:id="@+id/checkBox11"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="鶏肉"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox14" />
+                android:id="@+id/checkBox14"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="かに"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox16" />
+                android:id="@+id/checkBox16"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="バナナ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox15" />
+                android:id="@+id/checkBox15"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="そば"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox18" />
+                android:id="@+id/checkBox18"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="豚肉"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox17" />
+                android:id="@+id/checkBox17"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="落花生"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox22" />
+                android:id="@+id/checkBox22"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="まつたけ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox19" />
+                android:id="@+id/checkBox19"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="あわび"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox23" />
+                android:id="@+id/checkBox23"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="もも"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox20" />
+                android:id="@+id/checkBox20"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="いか"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox26" />
+                android:id="@+id/checkBox26"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="やまいも"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox24" />
+                android:id="@+id/checkBox24"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="いくら"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox27" />
+                android:id="@+id/checkBox27"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="りんご"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox25" />
+                android:id="@+id/checkBox25"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="オレンジ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox29" />
+                android:id="@+id/checkBox29"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="ゼラチン"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox28" />
+                android:id="@+id/checkBox28"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="キウイフルーツ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox31" />
+                android:id="@+id/checkBox31"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="魚介類"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox30" />
+                android:id="@+id/checkBox30"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="牛肉"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox33" />
+                android:id="@+id/checkBox33"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="カシューナッツ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox32" />
+                android:id="@+id/checkBox32"
+                android:layout_weight="0.5"/>
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <CheckBox
                 android:text="くるみ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox35" />
+                android:id="@+id/checkBox35"
+                android:layout_weight="0.5"/>
 
             <CheckBox
                 android:text="ごま"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox34" />
+                android:id="@+id/checkBox34"
+                android:layout_weight="0.5"/>
         </TableRow>
 
     </TableLayout>
