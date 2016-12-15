@@ -26,10 +26,10 @@
         <activity android:name=".cl_menuSelect_Category"
             android:label="メニューカテゴリ選択">
         </activity>
-        <activity android:name=".MenuLi"
+        <activity android:name=".cl_menuSelect_Choice"
             android:label="メニュー選択">
         </activity>
-        <activity android:name=".MenuDe"
+        <activity android:name=".cl_menuSelect_Details"
             android:label="メニュー詳細">
         </activity>
         <activity android:name=".cl_setting"
