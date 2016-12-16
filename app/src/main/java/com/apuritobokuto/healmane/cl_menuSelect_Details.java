@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class MenuDe extends Activity{
+public class cl_menuSelect_Details extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

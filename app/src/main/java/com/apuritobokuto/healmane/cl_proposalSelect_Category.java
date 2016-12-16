@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class MenuLi extends Activity{
+public class cl_proposalSelect_Category extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -21,7 +21,7 @@ public class MenuLi extends Activity{
         menu1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), MenuDe.class);
+                Intent intent = new Intent(getApplication(), cl_menuSelect_Details.class);
                 startActivity(intent);
             }
         });
