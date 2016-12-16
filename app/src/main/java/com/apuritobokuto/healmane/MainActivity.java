@@ -34,15 +34,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button proposal =(Button)findViewById(R.id.proposal);
-        menu.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(getApplication(),cl_proposalSelect_Category.class);
-                startActivity(intent);
-            }
-        });
-
         Button setting =(Button)findViewById(R.id.setting);
         setting.setOnClickListener(new OnClickListener() {
             @Override
