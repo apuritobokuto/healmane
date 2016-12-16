@@ -32,6 +32,12 @@
         <activity android:name=".cl_menuSelect_Details"
             android:label="メニュー詳細">
         </activity>
+        <activity android:name=".cl_information"
+            android:label="お知らせ">
+        </activity>
+        <activity android:name=".cl_help"
+            android:label="ヘルプ">
+        </activity>
         <activity android:name=".cl_setting"
             android:label="設定">
         </activity>
