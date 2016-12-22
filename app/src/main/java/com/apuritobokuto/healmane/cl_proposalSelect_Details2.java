@@ -11,21 +11,21 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class cl_proposalSelect_Rice extends Activity{
+public class cl_proposalSelect_Details2 extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_proposalrice);
+        setContentView(R.layout.activity_proposaldetails);
 
-        Button menu1 = (Button) findViewById(R.id.button7);
-        menu1.setOnClickListener(new View.OnClickListener() {
+        Button menu = (Button) findViewById(R.id.button6);
+        menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), cl_proposalSelect_Details2.class);
+                Intent intent = new Intent(getApplication(), cl_proposalSelect_Result.class);
                 startActivity(intent);
+                /**finish();**/
             }
         });
-
 
     }
 

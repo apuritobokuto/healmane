@@ -15,13 +15,31 @@ public class cl_proposalSelect_Category extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menusc);
+        setContentView(R.layout.activity_proposalcategory);
 
-        Button menu1 = (Button) findViewById(R.id.menu1);
-        menu1.setOnClickListener(new View.OnClickListener() {
+        Button shu = (Button) findViewById(R.id.shu);
+        shu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), cl_menuSelect_Details.class);
+                Intent intent = new Intent(getApplication(), cl_proposalSelect_Choice.class);
+                startActivity(intent);
+            }
+        });
+
+        Button don = (Button) findViewById(R.id.don);
+        don.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), cl_proposalSelect_Choice.class);
+                startActivity(intent);
+            }
+        });
+
+        Button men = (Button) findViewById(R.id.men);
+        men.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), cl_proposalSelect_Choice.class);
                 startActivity(intent);
             }
         });

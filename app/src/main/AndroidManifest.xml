@@ -32,6 +32,24 @@
         <activity android:name=".cl_menuSelect_Details"
             android:label="メニュー詳細">
         </activity>
+        <activity android:name=".cl_proposalSelect_Category"
+            android:label="メニュー提案">
+        </activity>
+        <activity android:name=".cl_proposalSelect_Choice"
+            android:label="メニュー提案選択">
+        </activity>
+        <activity android:name=".cl_proposalSelect_Details1"
+            android:label="メニュー提案詳細1">
+        </activity>
+        <activity android:name=".cl_proposalSelect_Rice"
+            android:label="メニュー提案ご飯">
+        </activity>
+        <activity android:name=".cl_proposalSelect_Details2"
+            android:label="メニュー提案詳細2">
+        </activity>
+        <activity android:name=".cl_proposalSelect_Result"
+            android:label="メニュー提案結果">
+        </activity>
         <activity android:name=".cl_information"
             android:label="お知らせ">
         </activity>
