@@ -17,8 +17,8 @@ public class cl_proposalSelect_Details1 extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proposaldetails);
 
-        Button menu = (Button) findViewById(R.id.button6);
-        menu.setOnClickListener(new View.OnClickListener() {
+        Button proposaldetails_ch = (Button) findViewById(R.id.proposaldetails_ch);
+        proposaldetails_ch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), cl_proposalSelect_Rice.class);
