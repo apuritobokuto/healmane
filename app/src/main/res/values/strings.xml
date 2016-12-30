@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Healmane</string>
+
+    <string-array name="weekchoice">
+    <item>第1週</item>
+    <item>第2週</item>
+    <item>第3週</item>
+    <item>第4週</item>
+    </string-array>
+
 </resources>
