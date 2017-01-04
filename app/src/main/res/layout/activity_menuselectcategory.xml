@@ -16,39 +16,99 @@
             android:weightSum="1">
 
             <Button
-                android:text="メニュー１"
+
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_height="100dp"
                 android:id="@+id/menu1" />
 
             <Button
                 android:text="メニュー２"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_weight="0.2"
-                android:id="@+id/menud" />
+                android:id="@+id/menu2" />
 
             <Button
                 android:text="メニュ３"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_weight="0.2"
-                android:id="@+id/menud" />
+                android:id="@+id/menu3" />
 
             <Button
                 android:text="メニュー４"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/button4"
-                android:layout_weight="0.2" />
+                android:layout_height="100dp"
+                android:id="@+id/menu4"
+                />
 
             <Button
                 android:text="メニュー５"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/button5"
+                android:layout_height="100dp"
+                android:id="@+id/menu6"
+                android:layout_weight="0.53" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu7"
                 android:layout_weight="0.2" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu8"
+                android:layout_weight="0.2" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu9"
+                android:layout_weight="0.2" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu10"
+                android:layout_weight="0.2" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu11"
+                android:layout_weight="0.2" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu12"
+                android:layout_weight="0.2" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu13"
+                android:layout_weight="0.2" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu14"
+                android:layout_weight="0.2" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu15"
+                android:layout_weight="0.2" />
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/menu16"
+                android:layout_weight="0.2" />
+
         </LinearLayout>
     </ScrollView>
 

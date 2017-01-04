@@ -1,4 +1,4 @@
-package com.apuritobokuto.healmane;
+﻿package com.apuritobokuto.healmane;
 
 import android.app.Activity;
 import android.content.Intent;
