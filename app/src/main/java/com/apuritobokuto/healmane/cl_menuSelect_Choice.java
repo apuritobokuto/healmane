@@ -15,7 +15,7 @@ public class cl_menuSelect_Choice extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menuselectcategory);
+        setContentView(R.layout.activity_menuchoice);
 
         Button menu1 = (Button) findViewById(R.id.menu1);
         menu1.setOnClickListener(new View.OnClickListener() {
