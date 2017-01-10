@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
 
-    <ScrollView
+    <Space
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="match_parent"
         android:fillViewport="true">
 
@@ -111,9 +113,30 @@
 
         </LinearLayout>
     </ScrollView>
+=======
+        android:layout_height="53dp"
+        android:layout_weight="0.04" />
 
-    <Space
+    <Button
+        android:text="主食"
         android:layout_width="match_parent"
-        android:layout_height="53dp" />
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:id="@+id/menul" />
+
+    <Button
+        android:text="主菜"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:id="@+id/menud" />
+>>>>>>> 5043f366968c9a3fef70519796879c805a0dc207
+
+    <Button
+        android:text="副菜"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:id="@+id/menud" />
 
 </LinearLayout>

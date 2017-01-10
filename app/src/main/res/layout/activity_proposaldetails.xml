@@ -7,6 +7,6 @@
         android:text="選択"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button6" />
+        android:id="@+id/proposaldetails_ch" />
 
 </LinearLayout>

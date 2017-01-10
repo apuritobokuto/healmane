@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+    android:layout_height="match_parent">
 
 
-    <Space
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:layout_weight="0.04" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
+<<<<<<< HEAD
     <Button
         android:text="主食"
         android:layout_width="match_parent"
@@ -23,12 +23,59 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
         android:id="@+id/menuS" />
+=======
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-    <Button
-        android:text="副菜"
+            <Button
+                android:text="メニュー１"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:id="@+id/menu1" />
+
+            <Button
+                android:text="メニュー２"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:id="@+id/menud" />
+>>>>>>> 5043f366968c9a3fef70519796879c805a0dc207
+
+            <Button
+                android:text="メニュ３"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:id="@+id/menud" />
+
+            <Button
+                android:text="メニュー４"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button4"
+                android:layout_weight="0.2" />
+
+            <Button
+                android:text="メニュー５"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button5"
+                android:layout_weight="0.2" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Space
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
         android:id="@+id/menuSS" />
+=======
+        android:layout_height="53dp" />
+>>>>>>> 5043f366968c9a3fef70519796879c805a0dc207
 
 </LinearLayout>
