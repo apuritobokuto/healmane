@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/RChart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="0.40" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/GChart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="0.40" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/YChart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="0.40" />
+
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/spinner"
+        android:spinnerMode="dialog"
+        android:entries="@array/weekchoice" />
 </LinearLayout>
+

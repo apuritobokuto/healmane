@@ -4,44 +4,49 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <RadioButton
-        android:text="ご飯SS"
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioButton"
-        android:layout_weight="0.08" />
+        android:layout_height="wrap_content" >
 
-    <RadioButton
-        android:text="ご飯S"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioButton1"
-        android:layout_weight="0.08" />
+        <RadioButton
+            android:text="ご飯SS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbRiceSS"
+            android:layout_weight="1" />
 
-    <RadioButton
-        android:text="ご飯M"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioButton2"
-        android:layout_weight="0.08" />
+        <RadioButton
+            android:text="ご飯S"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbRiceS"
+            android:layout_weight="1" />
 
-    <RadioButton
-        android:text="ご飯L"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioButton3"
-        android:layout_weight="0.08" />
+        <RadioButton
+            android:text="ご飯M"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbRiceM"
+            android:layout_weight="1" />
 
-    <RadioButton
-        android:text="ご飯なし"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioButton4"
-        android:layout_weight="0.08" />
+        <RadioButton
+            android:text="ご飯L"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbRiceL"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="ご飯なし"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbNoRice"
+            android:layout_weight="1" />
+    </RadioGroup>
 
     <Button
         android:text="確定"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button7" />
+        android:id="@+id/proposalrice_dec" />
 </LinearLayout>
