@@ -77,7 +77,7 @@ public class cl_healthManage extends Activity {
         LineData GreenData = new LineData(labels, GreenDataSet);
         LineData YellowData = new LineData(labels,YellowDataSet);
 
-                //LineDataをLineChartにセット
+        //LineDataをLineChartにセット
         RLineChart.setData(RedData);
         GLineChart.setData(GreenData);
         YLineChart.setData(YellowData);
