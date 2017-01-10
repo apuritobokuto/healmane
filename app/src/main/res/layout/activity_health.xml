@@ -6,16 +6,28 @@
 
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart1"
+        android:id="@+id/RChart"
         android:layout_width="match_parent"
-        android:layout_height="366dp"
-        android:layout_weight="0.57" />
+        android:layout_height="200dp"
+        android:layout_weight="0.40" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/GChart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="0.40" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/YChart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="0.40" />
+
 
     <Spinner
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="50dp"
         android:id="@+id/spinner"
-        android:layout_weight="0.25"
         android:spinnerMode="dialog"
         android:entries="@array/weekchoice" />
 </LinearLayout>
