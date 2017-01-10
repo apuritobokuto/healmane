@@ -1,4 +1,4 @@
-﻿package com.apuritobokuto.healmane;
+package com.apuritobokuto.healmane;
 
 /**
  * Created by RyuSato on 2016/11/29.
