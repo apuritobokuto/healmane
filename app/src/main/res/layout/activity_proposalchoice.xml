@@ -1,59 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="1">
-
-            <Button
-                android:text="メニュー１"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:id="@+id/menu1" />
-
-            <Button
-                android:text="メニュー２"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:id="@+id/menud" />
-
-            <Button
-                android:text="メニュ３"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:id="@+id/menud" />
-
-            <Button
-                android:text="メニュー４"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/button4"
-                android:layout_weight="0.2" />
-
-            <Button
-                android:text="メニュー５"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/button5"
-                android:layout_weight="0.2" />
-        </LinearLayout>
-    </ScrollView>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="53dp" />
-
-</LinearLayout>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/proposallist"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+</RelativeLayout>
