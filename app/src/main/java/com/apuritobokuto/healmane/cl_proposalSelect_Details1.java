@@ -4,14 +4,14 @@ package com.apuritobokuto.healmane;
  * Created by RyuSato on 2016/11/29.
  */
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 
-public class cl_proposalSelect_Details1 extends Activity{
+public class cl_proposalSelect_Details1 extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

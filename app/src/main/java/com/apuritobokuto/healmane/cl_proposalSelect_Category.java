@@ -22,6 +22,7 @@ public class cl_proposalSelect_Category extends Activity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), cl_proposalSelect_Choice.class);
+                intent.putExtra("data","11");
                 startActivity(intent);
             }
         });
@@ -31,6 +32,7 @@ public class cl_proposalSelect_Category extends Activity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), cl_proposalSelect_Choice.class);
+                intent.putExtra("data","12");
                 startActivity(intent);
             }
         });
@@ -40,6 +42,7 @@ public class cl_proposalSelect_Category extends Activity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), cl_proposalSelect_Choice.class);
+                intent.putExtra("data","13");
                 startActivity(intent);
             }
         });
