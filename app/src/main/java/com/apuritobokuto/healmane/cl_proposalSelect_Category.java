@@ -5,13 +5,14 @@ package com.apuritobokuto.healmane;
  */
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 
-public class cl_proposalSelect_Category extends Activity{
+public class cl_proposalSelect_Category extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
