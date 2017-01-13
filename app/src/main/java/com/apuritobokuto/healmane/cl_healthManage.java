@@ -15,11 +15,25 @@ import java.util.ArrayList;
 public class cl_healthManage extends Activity {
 
     @Override
+    protected void onResume(){
+        super.onResume();
+
+        // データベースヘルパーのインスタンス生成
+        cl_databaseControl dbHelper = new cl_databaseControl(getApplicationContext());
+
+        // データベースのオープン（ここでDBとテーブルが作成される）
+        dbHelper.openWrite();
+        dbHelper.close();
+    }
+
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health);
 
-        //グラフのインスタンス
+        //グラフ識別子の割り当て
         LineChart RLineChart = (LineChart)findViewById(R.id.RChart);
         LineChart GLineChart = (LineChart)findViewById(R.id.GChart);
         LineChart YLineChart = (LineChart)findViewById(R.id.YChart);
@@ -59,7 +73,7 @@ public class cl_healthManage extends Activity {
         YellowEntries.add(new Entry(67f,5));
         YellowEntries.add(new Entry(78f,6));
 
-        //データをセット
+        //データをセットし、それぞれのインスタンスを生成
         LineDataSet RedDataSet = new LineDataSet(RedEntries,"赤");
         LineDataSet GreenDataSet = new LineDataSet(GreenEntries,"緑");
         LineDataSet YellowDataSet = new LineDataSet(YellowEntries, "黄");
@@ -69,10 +83,10 @@ public class cl_healthManage extends Activity {
         GreenDataSet.setColor(Color.GREEN);
         YellowDataSet.setColor(Color.YELLOW);
 
-        //ラベル
+        //ラベル(x軸)
         String[] labels = {"1日","2日","3日", "4日", "5日", "6日", "7日"};
 
-        //LineDataインスタンス生成
+        //LineDataのインスタンス生成
         LineData RedData = new LineData(labels,RedDataSet);
         LineData GreenData = new LineData(labels, GreenDataSet);
         LineData YellowData = new LineData(labels,YellowDataSet);
