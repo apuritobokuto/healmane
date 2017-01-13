@@ -155,6 +155,7 @@ public class cl_proposalSelect_Details1 extends AppCompatActivity {
                 imgurl="http://10.0.2.2/apuritobokuto/"+data.getString("img");
                 System.out.println("code:"+code2.get(0));
                 global.menu1 = code2.get(0);
+                global.green1 = data.getString("green");
             RequestQueue qu = Volley.newRequestQueue(getApplicationContext());
             imageLoader = new ImageLoader(qu,new JpgCache());
             NetworkImageView menuimage = (NetworkImageView)findViewById(R.id.menuimage);

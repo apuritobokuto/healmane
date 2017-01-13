@@ -34,18 +34,31 @@ import java.util.ArrayList;
 /*public class cl_menuSelect_Choice extends AppCompatActivity implements View.OnClickListener {*/
 public class cl_proposalSelect_Result extends AppCompatActivity {
     //private Button readButton;
-    private ListView textview;
-    private ArrayAdapter adapter;
+    private ListView textview0;
+    private ListView textview1;
+    private ListView textview2;
+    private ListView textview3;
+    private ArrayAdapter adapter0;
+    private ArrayAdapter adapter1;
+    private ArrayAdapter adapter2;
+    private ArrayAdapter adapter3;
     //private String data;
     private ArrayList<String> code2;
     private ArrayList<String> imgurllist;
+    private ArrayList<String> imgurllist1;
+    private ArrayList<String> imgurllist2;
+    private ArrayList<String> imgurllist3;
     private String imgurl1;
     private String imgurl2;
     private ImageLoader imageLoader1;
     private ImageLoader imageLoader2;
     private ImageLoader imageLoader3;
     private ImageLoader imageLoader4;
-
+    private ImageLoader imageLoader5;
+    private ImageLoader imageLoader6;
+    private ImageLoader imageLoader7;
+    private ImageLoader imageLoader8;
+    private String Sum;
 
     Global global;
 
@@ -54,7 +67,13 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proposalresult);
         global = (Global)this.getApplication();
-
+        double a=0.0,b=0.0,sum=0.0;
+        a=Double.parseDouble(global.green1);
+        b=Double.parseDouble(global.green2);
+        System.out.println("a:"+a+"b:"+b);
+        sum=(1.0-(a+b))/2.0;//緑は1食1.0目安で2品提案したい
+        Sum=String.valueOf(sum);
+        System.out.println("Sum:"+Sum);
         Button button = (Button) findViewById(R.id.proposaldecide1);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,37 +84,58 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
 
             }
         });
+        Button button2 = (Button) findViewById(R.id.proposaldecide2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
+            }
+        });
+
+        Button button3 = (Button) findViewById(R.id.proposaldecide3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
+            }
+        });
         //リスト
-        textview = (ListView) findViewById(R.id.textlist);
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
+        textview0 = (ListView) findViewById(R.id.textlist0);
+        textview1 = (ListView) findViewById(R.id.textlist1);
+        textview2 = (ListView) findViewById(R.id.textlist2);
+        textview3 = (ListView) findViewById(R.id.textlist3);
+        adapter0 = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
+        adapter1 = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
+        adapter2 = new ArrayAdapter(this,android.R.layout.simple_list_item_1);
+        adapter3 = new ArrayAdapter(this,android.R.layout.simple_list_item_1);
+
         code2 = new ArrayList<String>();
         imgurllist = new ArrayList<String>();
+        imgurllist1 = new ArrayList<String>();
+        imgurllist2 = new ArrayList<String>();
+        imgurllist3 = new ArrayList<String>();
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        Intent i = getIntent();
+        //Intent i = getIntent();
         //data=i.getStringExtra("productID");
         //System.out.println(data);
         //サーバーからデータを読み込む
-        System.out.println(global.menu1);
-        System.out.println(global.menu2);
+        System.out.println("globalmenu1:"+global.menu1);
+        System.out.println("globalmenu2:"+global.menu2);
         rereadVolley();
     }
 
-/*
-    @Override
-    public void onClick(View view) {
 
-        if (view.getId() == R.id.readbtn) {
-            //サーバに再度アクセス
-            rereadVolley();
-
-        }
-    }
-*/
 
     /*Volleyを起動データがあれば読み込みを開始*/
     private void rereadVolley() {
@@ -111,16 +151,24 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try{
-                            //Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
                             System.out.println("001");
                             JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonObjectp = new JSONObject(response);
                             if(jsonObject.getInt("status")==1) {
                                 System.out.println("002");
-                                //if(jsonObject.getInt("status")==1){
                                 JSONObject menuInfo = jsonObject.getJSONObject("result");
                                 System.out.println("003");
                                 ChangeListView(menuInfo);
-                                // }  //リストを更新する
+                               //リストを更新する
+                            }
+
+                            if(jsonObjectp.getInt("status")==1) {
+                                System.out.println("0022");
+                                JSONObject proInfo = jsonObjectp.getJSONObject("proposal");
+                                System.out.println("0033");
+                                ChangeProposalView(proInfo);
+                                //リストを更新する
                             }
                         }catch(JSONException e) {
                             //error
@@ -142,6 +190,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                 Map<String,String>params=new HashMap<String,String>();
                 params.put("id1",global.menu1);
                 params.put("id2",global.menu2);
+                params.put("green",Sum);
                 return params;
             }
         };
@@ -153,50 +202,127 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
     private void ChangeListView(JSONObject response) {
         try {
             //Jsonデータを取得
-            JSONArray count = response.getJSONArray("SQL_TEST1");
-            adapter.clear();
+                JSONArray count = response.getJSONArray("SQL_TEST1");
+                //JSONArray count2 = response.getJSONArray("SQL_TEST2");
+                adapter0.clear();
+                code2.clear();
+
+
+                //Jsonデータからリストを作成
+                for (int i = 0; i < count.length(); i++) {
+                    JSONObject data = count.getJSONObject(i);
+                    //JSONObject data2 = count2.getJSONObject(i);
+                    adapter0.add(data.getString("menu") + " " + data.get("money") + "円"
+                            + "\nカロリー" + data.get("calory") + "kcal\n"
+                            + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
+
+                    imgurllist.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
+
+                }
+                          /*select*/
+                RequestQueue qu = Volley.newRequestQueue(getApplicationContext());
+
+                imageLoader1 = new ImageLoader(qu,new JpgCache());
+                imageLoader2 = new ImageLoader(qu,new JpgCache());
+
+                NetworkImageView menuimage1 = (NetworkImageView)findViewById(R.id.menuimage1);
+                NetworkImageView menuimage2 = (NetworkImageView)findViewById(R.id.menuimage2);
+                menuimage1.setImageUrl(imgurllist.get(0),new ImageLoader(qu, new JpgCache()));
+                menuimage2.setImageUrl(imgurllist.get(1),new ImageLoader(qu, new JpgCache()));
+
+
+                textview0.setAdapter(adapter0);
+                adapter0.notifyDataSetChanged();
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void ChangeProposalView(JSONObject response) {
+        try {
+            //Jsonデータを取得
+
+            //if(count==0) {
+            JSONArray count = response.getJSONArray("SQL_TEST2");
+
+            adapter1.clear();
+            adapter2.clear();
+            adapter3.clear();
             code2.clear();
+
 
             //Jsonデータからリストを作成
             for (int i = 0; i < count.length(); i++) {
                 JSONObject data = count.getJSONObject(i);
-                adapter.add(data.getString("menu") + " " + data.get("money") + "円"
-                        + "\nカロリー" + data.get("calory") + "kcal\n"
-                        + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
-                // System.out.println(i+":"+data.getString("code"));
-                code2.add(data.getString("code"));
+                if(i<2) {
+                    adapter1.add(data.getString("menu") + " " + data.get("money") + "円"
+                            + "\nカロリー" + data.get("calory") + "kcal\n"
+                            + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
+                    imgurllist1.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
+                }else if(i<4){
+                    adapter2.add(data.getString("menu") + " " + data.get("money") + "円"
+                            + "\nカロリー" + data.get("calory") + "kcal\n"
+                            + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
+                    imgurllist2.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
 
-                imgurllist.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
+                }else{
+                    adapter3.add(data.getString("menu") + " " + data.get("money") + "円"
+                            + "\nカロリー" + data.get("calory") + "kcal\n"
+                            + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
+                    imgurllist3.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
+
+                }
+
             }
-            System.out.println("code:"+code2.get(0));
-            global.menu1 = code2.get(0);
-            //if(global.menu2.equals("nodata")){
-            //}else {
-                global.menu2 = code2.get(1);
-            //}
+                          /*select*/
             RequestQueue qu = Volley.newRequestQueue(getApplicationContext());
+            /*
             imageLoader1 = new ImageLoader(qu,new JpgCache());
             imageLoader2 = new ImageLoader(qu,new JpgCache());
+
             NetworkImageView menuimage1 = (NetworkImageView)findViewById(R.id.menuimage1);
             NetworkImageView menuimage2 = (NetworkImageView)findViewById(R.id.menuimage2);
             menuimage1.setImageUrl(imgurllist.get(0),new ImageLoader(qu, new JpgCache()));
             menuimage2.setImageUrl(imgurllist.get(1),new ImageLoader(qu, new JpgCache()));
-            //System.out.println("code[]="+code[i]);
-            //}
-
-            textview.setAdapter(adapter);
-            // textlist.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            //     public void onItemClick(AdapterView<?>parent, View view, int position,long id) {
-            //         String msg = (String)textlist.getItemAtPosition(position);
-            //         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();//msg
-            //         Intent intent = new Intent(getApplication(), cl_proposalSelect_Rice.class);
-            //         intent.putExtra("productID",code2.get(position));
-            //         startActivity(intent);
-            //     }
-            // });
+            */
 
 
-            adapter.notifyDataSetChanged();
+            //JSONArray count2 = response.getJSONArray("SQL_TEST2");
+
+
+            imageLoader3 = new ImageLoader(qu,new JpgCache());
+            imageLoader4 = new ImageLoader(qu,new JpgCache());
+            imageLoader5 = new ImageLoader(qu,new JpgCache());
+            imageLoader6 = new ImageLoader(qu,new JpgCache());
+            imageLoader7 = new ImageLoader(qu,new JpgCache());
+            imageLoader8 = new ImageLoader(qu,new JpgCache());
+
+
+            NetworkImageView menuimage3 = (NetworkImageView)findViewById(R.id.menuimage3);
+            NetworkImageView menuimage4 = (NetworkImageView)findViewById(R.id.menuimage4);
+            menuimage3.setImageUrl(imgurllist1.get(0),new ImageLoader(qu, new JpgCache()));
+            menuimage4.setImageUrl(imgurllist1.get(1),new ImageLoader(qu, new JpgCache()));
+
+            NetworkImageView menuimage5 = (NetworkImageView)findViewById(R.id.menuimage5);
+            NetworkImageView menuimage6 = (NetworkImageView)findViewById(R.id.menuimage6);
+            menuimage5.setImageUrl(imgurllist2.get(0),new ImageLoader(qu, new JpgCache()));
+            menuimage6.setImageUrl(imgurllist2.get(1),new ImageLoader(qu, new JpgCache()));
+
+            NetworkImageView menuimage7 = (NetworkImageView)findViewById(R.id.menuimage7);
+            NetworkImageView menuimage8 = (NetworkImageView)findViewById(R.id.menuimage8);
+            menuimage7.setImageUrl(imgurllist3.get(0),new ImageLoader(qu, new JpgCache()));
+            menuimage8.setImageUrl(imgurllist3.get(1),new ImageLoader(qu, new JpgCache()));
+
+
+
+            textview1.setAdapter(adapter1);
+            adapter1.notifyDataSetChanged();
+            textview2.setAdapter(adapter2);
+            adapter2.notifyDataSetChanged();
+            textview3.setAdapter(adapter3);
+            adapter3.notifyDataSetChanged();
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -206,26 +332,4 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
 
 }
 
-/*public class cl_proposalSelect_Result extends AppCompatActivity{
-    Global global;
-    TextView text;
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_proposalresult);
-        global = (Global)this.getApplication();
-        text = (TextView)findViewById(R.id.textView);
-        text.setText(global.menu1+global.menu2);
 
-        Button proposalresult_dec = (Button) findViewById(R.id.proposalresult_dec);
-        proposalresult_dec.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
-}
-*/

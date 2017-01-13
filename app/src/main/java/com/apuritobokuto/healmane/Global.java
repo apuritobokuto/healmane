@@ -12,16 +12,18 @@ public class Global extends Application {
     String menu3;
     String menu4;
     String menu5;
-    String red;
-    String green;
+    String green1;
+    String green2;
+    String totalgreen;
     public void GlobalAllInit(){
         menu1 = "nodata";
         menu2 = "nodata";
         menu3 = "nodata";
         menu4 = "nodata";
         menu5 = "nodata";
-        red = "nodata";
-        green = "nodata";
+        green1 = "nodata";
+        green2 = "nodata";
+        totalgreen = "nodata";
     }
 
 }
