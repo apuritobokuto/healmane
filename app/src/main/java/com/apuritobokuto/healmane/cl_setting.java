@@ -24,6 +24,15 @@ public class cl_setting extends Activity{
                 startActivity(intent);
             }
         });
+
+        Button hozon = (Button) findViewById(R.id.hozon);
+        hozon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
