@@ -3,12 +3,10 @@ package com.apuritobokuto.healmane;
 /**
  * Created by RyuSato on 2016/11/29.
  */
-import android.os.Bundle;
-
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,17 +16,18 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.ImageLoader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
 
 /*public class cl_menuSelect_Choice extends AppCompatActivity implements View.OnClickListener {*/
 public class cl_proposalSelect_Details1 extends AppCompatActivity {
@@ -39,11 +38,14 @@ public class cl_proposalSelect_Details1 extends AppCompatActivity {
     private ArrayList<String> code2;
     private String imgurl;
     private ImageLoader imageLoader;
+    Global global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proposaldetails);
+        global = (Global)this.getApplication();
+        global.GlobalAllInit();
 
         Button button = (Button) findViewById(R.id.proposaldetails_ch);
         button.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +153,8 @@ public class cl_proposalSelect_Details1 extends AppCompatActivity {
                 code2.add(data.getString("code"));
                 imgurl="http://10.0.2.2/apuritobokuto/"+data.getString("img");
                 System.out.println("code:"+code2.get(0));
+                global.menu1 = code2.get(0);
+                global.green1 = data.getString("green");
             RequestQueue qu = Volley.newRequestQueue(getApplicationContext());
             imageLoader = new ImageLoader(qu,new JpgCache());
             NetworkImageView menuimage = (NetworkImageView)findViewById(R.id.menuimage);
