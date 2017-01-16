@@ -4,35 +4,41 @@ package com.apuritobokuto.healmane;
  * Created by RyuSato on 2016/11/29.
  */
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
+
+import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import android.content.SharedPreferences;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
+
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.ImageLoader;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 
 /*public class cl_menuSelect_Choice extends AppCompatActivity implements View.OnClickListener {*/
 public class cl_proposalSelect_Result extends AppCompatActivity {
@@ -98,9 +104,11 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
 
 
 
+
         Button button = (Button) findViewById(R.id.proposaldecide1);
         button.setOnClickListener(new View.OnClickListener() {
-            @Override
+          
+          @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
                 savedate();
@@ -109,6 +117,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
 
             }
         });
+
         Button button2 = (Button) findViewById(R.id.proposaldecide2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,8 +127,10 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
+
             }
         });
+
 
         Button button3 = (Button) findViewById(R.id.proposaldecide3);
         button3.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +170,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         System.out.println("globalmenu2:"+global.menu2);
         rereadVolley();
     }
+
 
 
 
