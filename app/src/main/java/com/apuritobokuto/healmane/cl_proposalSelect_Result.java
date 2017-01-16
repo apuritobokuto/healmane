@@ -7,6 +7,7 @@ package com.apuritobokuto.healmane;
 import android.os.Bundle;
 
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,14 +32,16 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /*public class cl_menuSelect_Choice extends AppCompatActivity implements View.OnClickListener {*/
 public class cl_proposalSelect_Result extends AppCompatActivity {
     //private Button readButton;
-    private ListView textview0;
-    private ListView textview1;
-    private ListView textview2;
-    private ListView textview3;
+    private ListView textview0;//選択したメニュー
+    private ListView textview1;//提案1
+    private ListView textview2;//提案2
+    private ListView textview3;//提案3
     private ArrayAdapter adapter0;
     private ArrayAdapter adapter1;
     private ArrayAdapter adapter2;
@@ -48,8 +52,6 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
     private ArrayList<String> imgurllist1;
     private ArrayList<String> imgurllist2;
     private ArrayList<String> imgurllist3;
-    private String imgurl1;
-    private String imgurl2;
     private ImageLoader imageLoader1;
     private ImageLoader imageLoader2;
     private ImageLoader imageLoader3;
@@ -59,8 +61,24 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
     private ImageLoader imageLoader7;
     private ImageLoader imageLoader8;
     private String Sum;
+    private String dtmp;
+    private Date today;
 
-    Global global;
+    private SimpleDateFormat dateformat;
+    //    private SharedPreferences.Editor setdate;
+    private static final String dkey="date";
+
+
+
+    private void savedate(){
+        SharedPreferences registered = PreferenceManager.getDefaultSharedPreferences(getApplication());
+        SharedPreferences.Editor setdate = registered.edit();
+        setdate.putString(dkey,dtmp);
+        setdate.commit();
+    }
+
+    Global global;//買い物カゴ的な役割
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +92,19 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         sum=(1.0-(a+b))/2.0;//緑は1食1.0目安で2品提案したい
         Sum=String.valueOf(sum);
         System.out.println("Sum:"+Sum);
+        today = new Date();
+        dateformat = new SimpleDateFormat("yyMMdd");
+        dtmp=dateformat.format(today);
+        System.out.println("date:"+dtmp);
+
+
+
         Button button = (Button) findViewById(R.id.proposaldecide1);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
+                savedate();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
@@ -89,6 +115,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
+                savedate();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
@@ -100,6 +127,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
+                savedate();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
@@ -126,9 +154,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //Intent i = getIntent();
-        //data=i.getStringExtra("productID");
-        //System.out.println(data);
+
         //サーバーからデータを読み込む
         System.out.println("globalmenu1:"+global.menu1);
         System.out.println("globalmenu2:"+global.menu2);
@@ -277,15 +303,6 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
             }
                           /*select*/
             RequestQueue qu = Volley.newRequestQueue(getApplicationContext());
-            /*
-            imageLoader1 = new ImageLoader(qu,new JpgCache());
-            imageLoader2 = new ImageLoader(qu,new JpgCache());
-
-            NetworkImageView menuimage1 = (NetworkImageView)findViewById(R.id.menuimage1);
-            NetworkImageView menuimage2 = (NetworkImageView)findViewById(R.id.menuimage2);
-            menuimage1.setImageUrl(imgurllist.get(0),new ImageLoader(qu, new JpgCache()));
-            menuimage2.setImageUrl(imgurllist.get(1),new ImageLoader(qu, new JpgCache()));
-            */
 
 
             //JSONArray count2 = response.getJSONArray("SQL_TEST2");
