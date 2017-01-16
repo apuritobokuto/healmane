@@ -24,11 +24,5 @@
         android:layout_weight="0.40" />
 
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/spinner"
-        android:spinnerMode="dialog"
-        android:entries="@array/weekchoice" />
 </LinearLayout>
 

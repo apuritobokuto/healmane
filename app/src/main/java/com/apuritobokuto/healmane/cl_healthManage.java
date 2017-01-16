@@ -13,21 +13,6 @@ import java.util.ArrayList;
 
 
 public class cl_healthManage extends Activity {
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-
-        // データベースヘルパーのインスタンス生成
-        cl_databaseControl dbHelper = new cl_databaseControl(getApplicationContext());
-
-        // データベースのオープン（ここでDBとテーブルが作成される）
-        dbHelper.openWrite();
-        dbHelper.close();
-    }
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
