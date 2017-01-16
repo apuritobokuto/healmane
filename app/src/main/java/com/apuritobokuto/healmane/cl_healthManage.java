@@ -24,9 +24,7 @@ public class cl_healthManage extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         //データベースを閉じる
         db.close();
-    }
-
-    protected void graphDraw() {
+        
         //グラフ識別子の割り当て
         LineChart RLineChart = (LineChart) findViewById(R.id.RChart);
         LineChart GLineChart = (LineChart) findViewById(R.id.GChart);
