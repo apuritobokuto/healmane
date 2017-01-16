@@ -39,11 +39,14 @@ public class cl_proposalSelect_Details1 extends AppCompatActivity {
     private ArrayList<String> code2;
     private String imgurl;
     private ImageLoader imageLoader;
+    Global global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proposaldetails);
+        global = (Global)this.getApplication();
+        global.GlobalAllInit();
 
         Button button = (Button) findViewById(R.id.proposaldetails_ch);
         button.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +154,8 @@ public class cl_proposalSelect_Details1 extends AppCompatActivity {
                 code2.add(data.getString("code"));
                 imgurl="http://10.0.2.2/apuritobokuto/"+data.getString("img");
                 System.out.println("code:"+code2.get(0));
+                global.menu1 = code2.get(0);
+                global.green1 = data.getString("green");
             RequestQueue qu = Volley.newRequestQueue(getApplicationContext());
             imageLoader = new ImageLoader(qu,new JpgCache());
             NetworkImageView menuimage = (NetworkImageView)findViewById(R.id.menuimage);

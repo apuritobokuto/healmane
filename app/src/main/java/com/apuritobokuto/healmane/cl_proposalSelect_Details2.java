@@ -36,21 +36,29 @@ public class cl_proposalSelect_Details2 extends AppCompatActivity {
     //private Button readButton;
     private ListView textlist;
     private ArrayAdapter adapter;
-    private String data;
+    private String ricedata;
     private ArrayList<String> code2;
     private String imgurl;
     private ImageLoader imageLoader;
+    Global global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proposaldetails);
+        global = (Global)this.getApplication();
 
         Button button = (Button) findViewById(R.id.proposaldetails_ch);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), cl_proposalSelect_Result.class);
+                if(code2.get(0).equals("nodata")) {
+                    intent.putExtra("productID","nodata");
+                }else {
+                    intent.putExtra("productID", code2.get(0));
+                }
                 startActivity(intent);
             }
         });
@@ -65,10 +73,11 @@ public class cl_proposalSelect_Details2 extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Intent i = getIntent();
-        data=i.getStringExtra("productID");
-        System.out.println(data);
-        //サーバーからデータを読み込む
+        ricedata=i.getStringExtra("riceID");
+        System.out.println(ricedata);
         rereadVolley();
+        //サーバーからデータを読み込む
+
     }
 
 /*
@@ -86,52 +95,65 @@ public class cl_proposalSelect_Details2 extends AppCompatActivity {
     /*Volleyを起動データがあれば読み込みを開始*/
     private void rereadVolley() {
         //サーバーのアドレス
-        String POST_URL = "http://10.0.2.2/apuritobokuto/androidphp/detail.php";
+        //if (ricedata.equals("nodata")) {
+        //    adapter.clear();
+        //    code2.clear();
+        //    adapter.add("ごはんは選択しません");
+        //    code2.add("nodata");
+        //    textlist.setAdapter(adapter);
+        //    adapter.notifyDataSetChanged();
+        //    global.menu2="nodata";
+        //} else {
 
-        //Volleyによる通信開始　（GETかPOST、サーバーのURL、受信メゾット、エラーメゾット）
-        RequestQueue queue = Volley.newRequestQueue(this);
+            String POST_URL = "http://10.0.2.2/apuritobokuto/androidphp/detail.php";
 
-        StringRequest request = new StringRequest(Request.Method.POST, POST_URL,
-                // 通信成功
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try{
-                            //Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
-                            System.out.println("001");
-                            JSONObject jsonObject = new JSONObject(response);
-                            if(jsonObject.getInt("status")==1) {
-                                System.out.println("002");
-                                //if(jsonObject.getInt("status")==1){
-                                JSONObject menuInfo = jsonObject.getJSONObject("result");
-                                System.out.println("003");
-                                ChangeListView(menuInfo);
-                                // }  //リストを更新する
+            //Volleyによる通信開始　（GETかPOST、サーバーのURL、受信メゾット、エラーメゾット）
+            RequestQueue queue = Volley.newRequestQueue(this);
+
+            StringRequest request = new StringRequest(Request.Method.POST, POST_URL,
+                    // 通信成功
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                //Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
+                                System.out.println("001");
+                                JSONObject jsonObject = new JSONObject(response);
+                                if (jsonObject.getInt("status") == 1) {
+                                    System.out.println("002");
+                                    //if(jsonObject.getInt("status")==1){
+                                    JSONObject menuInfo = jsonObject.getJSONObject("result");
+                                    System.out.println("003");
+                                    ChangeListView(menuInfo);
+                                    // }  //リストを更新する
+                                }
+                            } catch (JSONException e) {
+                                //error
+                                System.out.println("error");
                             }
-                        }catch(JSONException e) {
-                            //error
-                            System.out.println("error");
+                        }
+                    },
+
+                    // 通信失敗
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), "通信に失敗しました。", Toast.LENGTH_SHORT).show();
                         }
                     }
-                },
-
-                // 通信失敗
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "通信に失敗しました。", Toast.LENGTH_SHORT).show();
-                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("id", ricedata);
+                    return params;
                 }
-        ){
-            @Override
-            protected Map<String,String>getParams(){
-                Map<String,String>params=new HashMap<String,String>();
-                params.put("id",data);
-                return params;
-            }
-        };
+            };
 
-        queue.add(request);
+            queue.add(request);
+        //}
+
+
     }
 
 
@@ -152,6 +174,8 @@ public class cl_proposalSelect_Details2 extends AppCompatActivity {
             code2.add(data.getString("code"));
             imgurl="http://10.0.2.2/apuritobokuto/"+data.getString("img");
             System.out.println("code:"+code2.get(0));
+            global.menu2 = code2.get(0);
+            global.green2=data.getString("green");
             RequestQueue qu = Volley.newRequestQueue(getApplicationContext());
             imageLoader = new ImageLoader(qu,new JpgCache());
             NetworkImageView menuimage = (NetworkImageView)findViewById(R.id.menuimage);

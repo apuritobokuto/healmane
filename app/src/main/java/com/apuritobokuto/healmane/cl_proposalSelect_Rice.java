@@ -144,6 +144,8 @@ public class cl_proposalSelect_Rice extends AppCompatActivity {
                 System.out.println("code:"+code1.get(i));
                 //System.out.println("code[]="+code[i]);
             }
+            //adapter.add("ごはんなし");
+            //code1.add("nodata");
 
             ricelist.setAdapter(adapter);
             ricelist.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -151,7 +153,7 @@ public class cl_proposalSelect_Rice extends AppCompatActivity {
                     String msg = (String)ricelist.getItemAtPosition(position);
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();//msg
                     Intent intent = new Intent(getApplication(), cl_proposalSelect_Details2.class);
-                    intent.putExtra("productID",code1.get(position));
+                    intent.putExtra("riceID",code1.get(position));
                     startActivity(intent);
                 }
             });

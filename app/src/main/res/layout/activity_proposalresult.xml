@@ -1,11 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
-    <Button
-        android:text="確定"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/proposalresult_dec" />
-</LinearLayout>
+        android:layout_height="270dp"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            >
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:layout_height="140dp"
+                android:weightSum="1">
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/menuimage1"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.5" />
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/menuimage2"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
+
+            <ListView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textlist0" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:layout_height="147dp"
+                android:weightSum="1">
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/menuimage3"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.5" />
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/menuimage4"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
+
+            <ListView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textlist1" />
+
+        </LinearLayout>
+        <Button
+            android:text="決定"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/proposaldecide1" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:layout_height="147dp"
+                android:weightSum="1">
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/menuimage5"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.5" />
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/menuimage6"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.5" />
+
+            </LinearLayout>
+
+            <ListView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textlist2" />
+
+        </LinearLayout>
+
+        <Button
+            android:text="決定"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/proposaldecide2" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:weightSum="1">
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/menuimage7"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.5" />
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/menuimage8"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.5" />
+
+            </LinearLayout>
+
+            <ListView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textlist3" />
+
+        </LinearLayout>
+
+        <Button
+            android:text="決定"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/proposaldecide3" />
+    </LinearLayout>
+
+
+
+
+
+
+
+</ScrollView>
