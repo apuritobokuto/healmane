@@ -65,17 +65,6 @@ public class cl_proposalSelect_Choice extends AppCompatActivity {
         rereadVolley();
     }
 
-/*
-    @Override
-    public void onClick(View view) {
-
-        if (view.getId() == R.id.readbtn) {
-            //サーバに再度アクセス
-            rereadVolley();
-
-        }
-    }
-*/
 
     /*Volleyを起動データがあれば読み込みを開始*/
     private void rereadVolley() {
