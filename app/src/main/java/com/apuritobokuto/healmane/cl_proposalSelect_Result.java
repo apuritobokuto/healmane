@@ -13,9 +13,7 @@ import android.content.ContentValues;
 
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -44,9 +42,8 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 
-/*public class cl_menuSelect_Choice extends AppCompatActivity implements View.OnClickListener {*/
 public class cl_proposalSelect_Result extends AppCompatActivity {
-    //private Button readButton;
+
     private ListView textview0;//選択したメニュー
     private ListView textview1;//提案1
     private ListView textview2;//提案2
@@ -55,12 +52,15 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
     private ArrayAdapter adapter1;
     private ArrayAdapter adapter2;
     private ArrayAdapter adapter3;
-    //private String data;
+
     private ArrayList<String> code2;
     private ArrayList<String> imgurllist;
     private ArrayList<String> imgurllist1;
     private ArrayList<String> imgurllist2;
     private ArrayList<String> imgurllist3;
+    private double green[];
+    private double yellow[];
+    private double red[];
     private ImageLoader imageLoader1;
     private ImageLoader imageLoader2;
     private ImageLoader imageLoader3;
@@ -85,7 +85,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         setdate.commit();
     }
 
-    private void insertdb(String day,String r,String y,String g){
+    private void insertdb(String day,double r,double y,double g){
         DatabaseHelper dbHelper = new DatabaseHelper(getApplication());
         SQLiteDatabase db  = dbHelper.getWritableDatabase();
         ContentValues insertValues = new ContentValues();
@@ -118,21 +118,6 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         dtmp=dateformat.format(today);
         System.out.println("date:"+dtmp);
 
-        //データベースヘルパーのインスタンスを作成する（まだデータベースはできない）
-        //DatabaseHelper dbHelper = new DatabaseHelper(getApplication());
-        //データベースオブジェクトを取得する（データベースにアクセスすると作成される。）
-        //SQLiteDatabase db = dbHelper.getWritableDatabase();
-        //データベースを閉じる
-        //db.close();
-
-        /*  sql += "create table healmane (";
-            sql += " id integer primary key autoincrement";
-            sql += ",day integer not null";
-            sql += ",red real";
-            sql += ",green real";
-            sql += ",yellow real";
-            sql += ")";
-        */
 
 
         Button button = (Button) findViewById(R.id.proposaldecide1);
@@ -142,7 +127,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
                 savedate();
-                insertdb(dtmp,"0.3","0.2","0.3");
+                insertdb(dtmp,red[0],yellow[0],green[0]);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
@@ -155,6 +140,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
                 savedate();
+                insertdb(dtmp,red[1],yellow[1],green[1]);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
@@ -169,6 +155,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
                 savedate();
+                insertdb(dtmp,red[2],yellow[2],green[2]);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
@@ -189,6 +176,10 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         imgurllist1 = new ArrayList<String>();
         imgurllist2 = new ArrayList<String>();
         imgurllist3 = new ArrayList<String>();
+        green = new double[3];
+        yellow = new double[3];
+        red = new double[3];
+
     }
 
 
@@ -285,6 +276,25 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                             + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
 
                     imgurllist.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
+                    String tmp;
+                    tmp=data.getString("green");
+                    green[0]=Double.parseDouble(tmp);
+                    tmp=data.getString("yellow");
+                    yellow[0]+=Double.parseDouble(tmp);
+                    tmp=data.getString("red");
+                    red[0]+=Double.parseDouble(tmp);
+                    tmp=data.getString("green");
+                    green[1]=Double.parseDouble(tmp);
+                    tmp=data.getString("yellow");
+                    yellow[1]+=Double.parseDouble(tmp);
+                    tmp=data.getString("red");
+                    red[1]+=Double.parseDouble(tmp);
+                    tmp=data.getString("green");
+                    green[2]=Double.parseDouble(tmp);
+                    tmp=data.getString("yellow");
+                    yellow[2]+=Double.parseDouble(tmp);
+                    tmp=data.getString("red");
+                    red[2]+=Double.parseDouble(tmp);
 
                 }
                           /*select*/
@@ -328,17 +338,38 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                             + "\nカロリー" + data.get("calory") + "kcal\n"
                             + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
                     imgurllist1.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
+                    String tmp;
+                    tmp=data.getString("green");
+                    green[0]+=Double.parseDouble(tmp);
+                    tmp=data.getString("yellow");
+                    yellow[0]+=Double.parseDouble(tmp);
+                    tmp=data.getString("red");
+                    red[0]+=Double.parseDouble(tmp);
                 }else if(i<4){
                     adapter2.add(data.getString("menu") + " " + data.get("money") + "円"
                             + "\nカロリー" + data.get("calory") + "kcal\n"
                             + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
                     imgurllist2.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
+                    String tmp;
+                    tmp=data.getString("green");
+                    green[1]+=Double.parseDouble(tmp);
+                    tmp=data.getString("yellow");
+                    yellow[1]+=Double.parseDouble(tmp);
+                    tmp=data.getString("red");
+                    red[1]+=Double.parseDouble(tmp);
 
                 }else{
                     adapter3.add(data.getString("menu") + " " + data.get("money") + "円"
                             + "\nカロリー" + data.get("calory") + "kcal\n"
                             + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
                     imgurllist3.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
+                    String tmp;
+                    tmp=data.getString("green");
+                    green[2]+=Double.parseDouble(tmp);
+                    tmp=data.getString("yellow");
+                    yellow[2]+=Double.parseDouble(tmp);
+                    tmp=data.getString("red");
+                    red[2]+=Double.parseDouble(tmp);
 
                 }
 
