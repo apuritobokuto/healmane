@@ -10,11 +10,14 @@ import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
+    Global global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        global = (Global) this.getApplication();
+        global.GlobalAllInit();
 
         Button health =(Button)findViewById(R.id.health);
         health.setOnClickListener(new OnClickListener() {

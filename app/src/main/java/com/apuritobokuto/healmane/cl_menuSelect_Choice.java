@@ -1,139 +1,158 @@
 package com.apuritobokuto.healmane;
 
-/**
- * Created by RyuSato on 2016/11/29.
- */
-
-import android.app.Activity;
-import android.content.Intent;
-import android.view.WindowManager;
-import android.view.Display;
+import android.content.ContentValues;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+
+import android.content.Intent;
+import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
 
-public class cl_menuSelect_Choice extends Activity {
-    String[] n = {"karaage","b","c","d","e","f","g"};
-    private TextView textView;
-    private boolean flag = false;
-    private  Button button[] = new Button[n.length];
-    private  LinearLayout.LayoutParams buttonLayoutParams;
-    ScrollView scrollView;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
+import android.widget.EditText;
+import java.util.ArrayList;
 
+/*public class cl_menuSelect_Choice extends AppCompatActivity implements View.OnClickListener {*/
+public class cl_menuSelect_Choice extends AppCompatActivity {
+    //private Button readButton;
+    private ListView proposallist;
+    private ArrayAdapter adapter;
+    private String data;
+    private ArrayList<String> code1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ScrollView scrollView = new ScrollView(this);
+        setContentView(R.layout.activity_proposalchoice);
 
-        setContentView(scrollView);
-
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-
-        layout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT));
-
-        scrollView.addView(layout);
+        //リスト
+        proposallist = (ListView) findViewById(R.id.proposallist);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
+        code1 = new ArrayList<String>();
+    }
 
 
-        for(int i=0; i< button.length ;i++) {
-            button[i] = new Button(this);
-            // Tag を設定する
-            button[i].setTag(String.valueOf(i));
-            button[i].setText("Button " + String.valueOf(i));
-            float scale = getResources().getDisplayMetrics().density;
-            int buttonWidth = (int)(360 * scale);
-            int buttonHeight = (int)(100 * scale);
-            LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(
-                    buttonWidth,buttonHeight);
 
 
-            button[i].setLayoutParams(buttonLayoutParams);
-            layout.addView(button[i]);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent i = getIntent();
+        data=i.getStringExtra("data");
+        System.out.println(data);
+        /*list*/
 
-            // Listnerをセット
-            button[i].setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
+        //サーバーからデータを読み込む
+        rereadVolley();
+    }
+
+
+    /*Volleyを起動データがあれば読み込みを開始*/
+    private void rereadVolley() {
+        //サーバーのアドレス
+        String POST_URL = "http://10.0.2.2/apuritobokuto/androidphp/menulist.php";
+
+        //Volleyによる通信開始　（GETかPOST、サーバーのURL、受信メゾット、エラーメゾット）
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, POST_URL,
+                // 通信成功
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try{
+                            //Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
+                            System.out.println("001");
+                            JSONObject jsonObject = new JSONObject(response);
+                            if(jsonObject.getInt("status")==1) {
+                                System.out.println("002");
+                                //if(jsonObject.getInt("status")==1){
+                                JSONObject menuInfo = jsonObject.getJSONObject("result");
+                                System.out.println("003");
+                                ChangeListView(menuInfo);
+                                // }  //リストを更新する
+                            }
+                        }catch(JSONException e) {
+                            //error
+                            System.out.println("error");
+                        }
+                    }
+                },
+
+                // 通信失敗
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "通信に失敗しました。", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String,String>getParams(){
+                Map<String,String>params=new HashMap<String,String>();
+                params.put("category",data);
+                return params;
+            }
+        };
+
+        queue.add(request);
+    }
+
+
+    private void ChangeListView(JSONObject response) {
+        try {
+            //Jsonデータを取得
+            JSONArray count = response.getJSONArray("SQL_TEST");
+            adapter.clear();
+            code1.clear();
+
+            //Jsonデータからリストを作成
+            for (int i = 0; i < count.length(); i++) {
+                JSONObject data = count.getJSONObject(i);
+                adapter.add(data.getString("menu") + "\n" + data.get("money")+"円");
+                System.out.println(i+":"+data.getString("code"));
+                code1.add(data.getString("code"));
+                System.out.println("code:"+code1.get(i));
+                //System.out.println("code[]="+code[i]);
+            }
+
+            proposallist.setAdapter(adapter);
+            proposallist.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                public void onItemClick(AdapterView<?>parent, View view, int position,long id) {
+                    String msg = (String)proposallist.getItemAtPosition(position);
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();//msg
                     Intent intent = new Intent(getApplication(), cl_menuSelect_Details.class);
+                    //intent.putExtra("productID",code1.get(position));
+                    intent.putExtra("productID",code1.get(position));
                     startActivity(intent);
                 }
             });
+
+
+            adapter.notifyDataSetChanged();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
 
-        /*button = new Button(this);
-        button.setText(n[1]);
-        float scale = getResources().getDisplayMetrics().density;
-        int buttonWidth = (int)(150 * scale);
-
-        buttonLayoutParams = new LinearLayout.LayoutParams(
-                buttonWidth, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        button.setLayoutParams(buttonLayoutParams);
-        layout.addView(button);
-
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                    if (flag){
-                    textView.setText(n[1]);
-                    }
-                    else {
-                        float scale = getResources().getDisplayMetrics().density;
-                        int buttonWidth = (int)(360 * scale);
-                        int buttonHeight = (int)(100 * scale);
-                        // 横幅 250dp に設定
-                        buttonLayoutParams = new LinearLayout.LayoutParams(
-                                buttonWidth, buttonHeight);
-                        int margins = (int)(20 * scale);
-                        // setMargins (int left, int top, int right, int bottom)
-
-                        button.setLayoutParams(buttonLayoutParams);
-                    }
-                }
-             });*/
 }
-
-
-
-
-        /*setContentView(R.layout.activity_menuselectcategory);
-        Button menu1 = (Button) findViewById(R.id.menu1);
-        menu1.setText(n[0]);
-        menu1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(),cl_menuSelect_Details.class);
-                startActivity(intent);
-            }
-        });
-        Button menu2 = (Button) findViewById(R.id.menu2);
-        menu2.setText(n[1]);
-        menu2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), cl_menuSelect_Details.class);
-                startActivity(intent);
-            }
-        });
-        Button menu3 = (Button) findViewById(R.id.menu3);
-        menu3.setText(n[2]);
-        menu3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), cl_menuSelect_Details.class);
-                startActivity(intent);
-            }
-        });
-
-    }*/
 
