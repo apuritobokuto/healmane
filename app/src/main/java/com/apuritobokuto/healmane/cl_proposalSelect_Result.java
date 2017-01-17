@@ -114,7 +114,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         Sum=String.valueOf(sum);
         System.out.println("Sum:"+Sum);
         today = new Date();
-        dateformat = new SimpleDateFormat("dd");
+        dateformat = new SimpleDateFormat("yyMMdd");
         dtmp=dateformat.format(today);
         System.out.println("date:"+dtmp);
 
