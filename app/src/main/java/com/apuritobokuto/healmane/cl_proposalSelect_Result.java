@@ -5,11 +5,15 @@ package com.apuritobokuto.healmane;
  */
 
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import android.content.Intent;
+import android.content.ContentValues;
+
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -70,7 +74,6 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
     private Date today;
 
     private SimpleDateFormat dateformat;
-    //    private SharedPreferences.Editor setdate;
     private static final String dkey="date";
 
 
@@ -82,6 +85,19 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         setdate.commit();
     }
 
+    private void insertdb(String day,String r,String y,String g){
+        DatabaseHelper dbHelper = new DatabaseHelper(getApplication());
+        SQLiteDatabase db  = dbHelper.getWritableDatabase();
+        ContentValues insertValues = new ContentValues();
+        System.out.println("insert"+"start");
+        insertValues.put("day",day);
+        insertValues.put("red",r);
+        insertValues.put("yellow",y);
+        insertValues.put("green",g);
+        System.out.println(insertValues);
+        db.insert("healmane",null,insertValues);
+        System.out.println("insert"+"end");
+    }
     Global global;//買い物カゴ的な役割
 
 
@@ -98,11 +114,25 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         Sum=String.valueOf(sum);
         System.out.println("Sum:"+Sum);
         today = new Date();
-        dateformat = new SimpleDateFormat("yyMMdd");
+        dateformat = new SimpleDateFormat("dd");
         dtmp=dateformat.format(today);
         System.out.println("date:"+dtmp);
 
+        //データベースヘルパーのインスタンスを作成する（まだデータベースはできない）
+        //DatabaseHelper dbHelper = new DatabaseHelper(getApplication());
+        //データベースオブジェクトを取得する（データベースにアクセスすると作成される。）
+        //SQLiteDatabase db = dbHelper.getWritableDatabase();
+        //データベースを閉じる
+        //db.close();
 
+        /*  sql += "create table healmane (";
+            sql += " id integer primary key autoincrement";
+            sql += ",day integer not null";
+            sql += ",red real";
+            sql += ",green real";
+            sql += ",yellow real";
+            sql += ")";
+        */
 
 
         Button button = (Button) findViewById(R.id.proposaldecide1);
@@ -112,6 +142,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
                 savedate();
+                insertdb(dtmp,"0.3","0.2","0.3");
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
