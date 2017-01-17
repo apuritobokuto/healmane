@@ -1,12 +1,20 @@
 package com.apuritobokuto.healmane;
 
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Ryu on 2016/11/17.
@@ -26,6 +34,31 @@ public class cl_menuSelect extends AppCompatActivity {
     private double r;
     private double c;
     private int money;
+    private SimpleDateFormat dateformat;
+    private static final String dkey="date";
+    private String dtmp;
+    private Date today;
+
+    private void savedate(){
+        SharedPreferences registered = PreferenceManager.getDefaultSharedPreferences(getApplication());
+        SharedPreferences.Editor setdate = registered.edit();
+        setdate.putString(dkey,dtmp);
+        setdate.commit();
+    }
+
+    private void insertdb(String day,double r,double y,double g){
+        DatabaseHelper dbHelper = new DatabaseHelper(getApplication());
+        SQLiteDatabase db  = dbHelper.getWritableDatabase();
+        ContentValues insertValues = new ContentValues();
+        System.out.println("insert"+"start");
+        insertValues.put("day",day);
+        insertValues.put("red",r);
+        insertValues.put("yellow",y);
+        insertValues.put("green",g);
+        System.out.println(insertValues);
+        db.insert("healmane",null,insertValues);
+        System.out.println("insert"+"end");
+    }
 
     public void cal(){
         r=Double.parseDouble(global.m[0][0])+Double.parseDouble(global.m[1][0])
@@ -55,6 +88,12 @@ public class cl_menuSelect extends AppCompatActivity {
         System.out.println("cal前");
         cal();
         System.out.println("cal後");
+
+        today = new Date();
+        dateformat = new SimpleDateFormat("yyMMdd");
+        dtmp=dateformat.format(today);
+        System.out.println("date:"+dtmp);
+
         TextView text = (TextView) findViewById(R.id.sum);
         text.setText("合計:"+money+"円"+"　カロリー"+c+"kcal"+"\n"+"赤:"+r+"点 緑:"+g+"点 黄:"+y+"点");
         button1 = (Button) findViewById(R.id.button1);
@@ -153,14 +192,40 @@ public class cl_menuSelect extends AppCompatActivity {
                 return true;
             }
         });
-        button5 = (Button) findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                global.GlobalAllInit();
-                finish();
-            }
-        });
+        SharedPreferences registered = PreferenceManager.getDefaultSharedPreferences(getApplication());
+        //System.out.println(registered.getString("date",null));
+        if(dtmp.equals(registered.getString("date",null))) {
+            button5 = (Button) findViewById(R.id.button5);
+            button5.setText("戻る");
+            button5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    global.GlobalAllInit();
+                    //Toast.makeText(getApplicationContext(), "登録は１日1回です。", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            });
+            Toast.makeText(getApplicationContext(), "登録は１日1回です。", Toast.LENGTH_LONG).show();
+        }else if(money!=0){
+            button5 = (Button) findViewById(R.id.button5);
+            button5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    insertdb(dtmp,r,y,g);
+                    global.GlobalAllInit();
+                    savedate();
+                    finish();
+                }
+            });
+        }else{
+            button5 = (Button) findViewById(R.id.button5);
+            button5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(), "メニューを選択してください。", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
     /*
