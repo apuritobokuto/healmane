@@ -42,6 +42,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 
+
 public class cl_proposalSelect_Result extends AppCompatActivity {
 
     private ListView textview0;//選択したメニュー
@@ -118,49 +119,89 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         dtmp=dateformat.format(today);
         System.out.println("date:"+dtmp);
 
+        SharedPreferences check = PreferenceManager.getDefaultSharedPreferences(getApplication());
+        if(dtmp.equals(check.getString("date",null))) {
+            Toast.makeText(getApplication(),"本日は登録済みです。",Toast.LENGTH_LONG).show();
+            Button button = (Button) findViewById(R.id.proposaldecide1);
+            button.setText("本日登録済み");
+            button.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplication(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+                }
+            });
+
+            Button button2 = (Button) findViewById(R.id.proposaldecide2);
+            button2.setText("本日登録済み");
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplication(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+                }
+            });
 
 
-        Button button = (Button) findViewById(R.id.proposaldecide1);
-        button.setOnClickListener(new View.OnClickListener() {
-          
-          @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), MainActivity.class);
-                savedate();
-                insertdb(dtmp,red[0],yellow[0],green[0]);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+            Button button3 = (Button) findViewById(R.id.proposaldecide3);
+            button3.setText("本日登録済み");
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplication(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
 
-            }
-        });
+                }
+            });
+        }else{
+            Button button = (Button) findViewById(R.id.proposaldecide1);
+            button.setOnClickListener(new View.OnClickListener() {
 
-        Button button2 = (Button) findViewById(R.id.proposaldecide2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), MainActivity.class);
-                savedate();
-                insertdb(dtmp,red[1],yellow[1],green[1]);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplication(), MainActivity.class);
+                    savedate();
+                    insertdb(dtmp, red[0], yellow[0], green[0]);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+                }
+            });
+
+            Button button2 = (Button) findViewById(R.id.proposaldecide2);
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplication(), MainActivity.class);
+                    savedate();
+                    insertdb(dtmp, red[1], yellow[1], green[1]);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
 
 
-            }
-        });
+                }
+            });
 
 
-        Button button3 = (Button) findViewById(R.id.proposaldecide3);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), MainActivity.class);
-                savedate();
-                insertdb(dtmp,red[2],yellow[2],green[2]);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+            Button button3 = (Button) findViewById(R.id.proposaldecide3);
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplication(), MainActivity.class);
+                    savedate();
+                    insertdb(dtmp, red[2], yellow[2], green[2]);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
 
-            }
-        });
+                }
+            });
+        }
         //リスト
         textview0 = (ListView) findViewById(R.id.textlist0);
         textview1 = (ListView) findViewById(R.id.textlist1);
@@ -210,7 +251,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try{
-                            Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
                             System.out.println("001");
                             JSONObject jsonObject = new JSONObject(response);
                             JSONObject jsonObjectp = new JSONObject(response);
@@ -416,6 +457,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(getApplication(),"大変申し訳ございません、DBエラーです。\n 最初からやり直してみてください。",Toast.LENGTH_SHORT).show();
         }
     }
 
