@@ -178,6 +178,7 @@ public class cl_proposalSelect_Details1 extends AppCompatActivity {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(getApplication(),"大変申し訳ございません、DBエラーです。\n 最初からやり直してみてください。",Toast.LENGTH_SHORT).show();
         }
     }
 
