@@ -46,8 +46,10 @@ public class cl_information extends AppCompatActivity {
             NetworkImageView infoimage = (NetworkImageView) findViewById(R.id.infoimage);
             //infoimage.setErrorImageResId(errorImageResId);
             infoimage.setImageUrl(imgurl, new ImageLoader(qu, new JpgCache()));
+            infoimage.setErrorImageResId(R.mipmap.error);
 
     }
+
 
 
 }
