@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         String sql = "";
         sql += "create table healmane (";
         sql += " id integer primary key autoincrement";
-        sql += ",day integer not null";
+        sql += ",day string not null";
         sql += ",red real";
         sql += ",green real";
         sql += ",yellow real";
