@@ -120,7 +120,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         System.out.println("date:"+dtmp);
 
         SharedPreferences check = PreferenceManager.getDefaultSharedPreferences(getApplication());
-        /*if(dtmp.equals(check.getString("date",null))) {
+        if(dtmp.equals(check.getString("date",null))) {
             Toast.makeText(getApplication(),"本日は登録済みです。",Toast.LENGTH_LONG).show();
             Button button = (Button) findViewById(R.id.proposaldecide1);
             button.setText("本日登録済み");
@@ -159,7 +159,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
 
                 }
             });
-        }else{*/
+        }else{
             Button button = (Button) findViewById(R.id.proposaldecide1);
             button.setOnClickListener(new View.OnClickListener() {
 
@@ -201,7 +201,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
 
                 }
             });
-        //}
+        }
         //リスト
         textview0 = (ListView) findViewById(R.id.textlist0);
         textview1 = (ListView) findViewById(R.id.textlist1);
