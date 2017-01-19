@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import android.content.SharedPreferences;
@@ -35,6 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
@@ -62,6 +64,8 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
     private double green[];
     private double yellow[];
     private double red[];
+    private int money[];
+    private double calory[];
     private ImageLoader imageLoader1;
     private ImageLoader imageLoader2;
     private ImageLoader imageLoader3;
@@ -118,6 +122,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         dateformat = new SimpleDateFormat("yyMMdd");
         dtmp=dateformat.format(today);
         System.out.println("date:"+dtmp);
+
 
         SharedPreferences check = PreferenceManager.getDefaultSharedPreferences(getApplication());
         if(dtmp.equals(check.getString("date",null))) {
@@ -220,9 +225,29 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         green = new double[3];
         yellow = new double[3];
         red = new double[3];
+        money = new int[3];
+        calory = new double[3];
+        //int[] money={0,0,0} ;
+        //double[] calory={0.0,0.0,0.0} ;
+        /*
+        TextView textView1 = (TextView) findViewById(R.id.textView1);
+        textView1.setText("合計:"+money[0]+"円"+"　カロリー"+calory[0]+"kcal"+"\n"+"赤:"+red[0]+"点 緑:"+green[0]+"点 黄:"+yellow[0]+"点");
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
+        textView2.setText("合計:"+money[0]+"円"+"　カロリー"+calory[0]+"kcal"+"\n"+"赤:"+red[0]+"点 緑:"+green[0]+"点 黄:"+yellow[0]+"点");
+        TextView textView3 = (TextView) findViewById(R.id.textView3);
+        textView3.setText("合計:"+money[0]+"円"+"　カロリー"+calory[0]+"kcal"+"\n"+"赤:"+red[0]+"点 緑:"+green[0]+"点 黄:"+yellow[0]+"点");
+        */
 
     }
+    private void viewsum(){
+        TextView textView1 = (TextView) findViewById(R.id.textView1);
+        textView1.setText("合計:"+money[0]+"円"+"　カロリー"+calory[0]+"kcal"+"\n"+"赤:"+red[0]+"点 緑:"+green[0]+"点 黄:"+yellow[0]+"点");
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
+        textView2.setText("合計:"+money[1]+"円"+"　カロリー"+calory[1]+"kcal"+"\n"+"赤:"+red[1]+"点 緑:"+green[1]+"点 黄:"+yellow[1]+"点");
+        TextView textView3 = (TextView) findViewById(R.id.textView3);
+        textView3.setText("合計:"+money[2]+"円"+"　カロリー"+calory[2]+"kcal"+"\n"+"赤:"+red[2]+"点 緑:"+green[2]+"点 黄:"+yellow[2]+"点");
 
+    }
 
     @Override
     protected void onResume() {
@@ -336,6 +361,19 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                     yellow[2]+=Double.parseDouble(tmp);
                     tmp=data.getString("red");
                     red[2]+=Double.parseDouble(tmp);
+                    tmp=data.getString("money");
+                    money[0]+=Integer.parseInt(tmp);
+                    tmp=data.getString("calory");
+                    calory[0]+=Double.parseDouble(tmp);
+                    tmp=data.getString("money");
+                    money[1]+=Integer.parseInt(tmp);
+                    tmp=data.getString("calory");
+                    calory[1]+=Double.parseDouble(tmp);
+                    tmp=data.getString("money");
+                    money[2]+=Integer.parseInt(tmp);
+                    tmp=data.getString("calory");
+                    calory[2]+=Double.parseDouble(tmp);
+
 
                 }
                           /*select*/
@@ -386,18 +424,31 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                     yellow[0]+=Double.parseDouble(tmp);
                     tmp=data.getString("red");
                     red[0]+=Double.parseDouble(tmp);
+
+                    tmp=data.getString("money");
+                    money[0]+=Integer.parseInt(tmp);
+                    tmp=data.getString("calory");
+                    calory[0]+=Double.parseDouble(tmp);
+
+                    System.out.println("ifの1");
                 }else if(i<4){
                     adapter2.add(data.getString("menu") + " " + data.get("money") + "円"
                             + "\nカロリー" + data.get("calory") + "kcal\n"
                             + " 赤" + data.get("red") + " 緑" + data.get("green") + " 黄" + data.get("yellow"));
                     imgurllist2.add("http://10.0.2.2/apuritobokuto/" + data.getString("img"));
-                    String tmp;
-                    tmp=data.getString("green");
-                    green[1]+=Double.parseDouble(tmp);
-                    tmp=data.getString("yellow");
-                    yellow[1]+=Double.parseDouble(tmp);
-                    tmp=data.getString("red");
-                    red[1]+=Double.parseDouble(tmp);
+                    String tmp1;
+                    tmp1=data.getString("green");
+                    green[1]+=Double.parseDouble(tmp1);
+                    tmp1=data.getString("yellow");
+                    yellow[1]+=Double.parseDouble(tmp1);
+                    tmp1=data.getString("red");
+                    red[1]+=Double.parseDouble(tmp1);
+                    tmp1=data.getString("money");
+                    money[1]+=Integer.parseInt(tmp1);
+                    tmp1=data.getString("calory");
+                    calory[1]+=Double.parseDouble(tmp1);
+                    System.out.println("ifの2");
+
 
                 }else{
                     adapter3.add(data.getString("menu") + " " + data.get("money") + "円"
@@ -411,6 +462,11 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                     yellow[2]+=Double.parseDouble(tmp);
                     tmp=data.getString("red");
                     red[2]+=Double.parseDouble(tmp);
+                    tmp=data.getString("money");
+                    money[2]+=Integer.parseInt(tmp);
+                    tmp=data.getString("calory");
+                    calory[2]+=Double.parseDouble(tmp);
+                    System.out.println("ifの3");
 
                 }
 
@@ -446,7 +502,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
             menuimage8.setImageUrl(imgurllist3.get(1),new ImageLoader(qu, new JpgCache()));
 
 
-
+            viewsum();
             textview1.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
             textview2.setAdapter(adapter2);
