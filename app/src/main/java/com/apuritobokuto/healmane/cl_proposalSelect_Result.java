@@ -36,6 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -115,7 +116,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
         a=Double.parseDouble(global.green1);
         b=Double.parseDouble(global.green2);
         System.out.println("a:"+a+"b:"+b);
-        sum=(1.0-(a+b))/2.0;//緑は1食1.0目安で2品提案したい
+        sum=(1.2-(a+b))/2.0;//緑は1食1.0目安で2品提案したい
         Sum=String.valueOf(sum);
         System.out.println("Sum:"+Sum);
         today = new Date();
@@ -241,11 +242,26 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
     }
     private void viewsum(){
         TextView textView1 = (TextView) findViewById(R.id.textView1);
-        textView1.setText("合計:"+money[0]+"円"+"　カロリー"+calory[0]+"kcal"+"\n"+"赤:"+red[0]+"点 緑:"+green[0]+"点 黄:"+yellow[0]+"点");
+        double rc,rr,rg,ry;
+        rc=Math.round(calory[0]*10);
+        rr=Math.round(red[0]*10);
+        rg=Math.round(green[0]*10);
+        ry=Math.round(yellow[0]*10);
+        textView1.setText("合計:"+money[0]+"円"+"　カロリー"+rc/10+"kcal"+"\n"+"赤:"+rr/10+"点 緑:"+rg/10+"点 黄:"+ry/10+"点");
+
         TextView textView2 = (TextView) findViewById(R.id.textView2);
-        textView2.setText("合計:"+money[1]+"円"+"　カロリー"+calory[1]+"kcal"+"\n"+"赤:"+red[1]+"点 緑:"+green[1]+"点 黄:"+yellow[1]+"点");
+        //double rc1,rr1,rg1,ry1;
+        rc=Math.round(calory[1]*10);
+        rr=Math.round(red[1]*10);
+        rg=Math.round(green[1]*10);
+        ry=Math.round(yellow[1]*10);
+        textView2.setText("合計:"+money[1]+"円"+"　カロリー"+rc/10+"kcal"+"\n"+"赤:"+rr/10+"点 緑:"+rg/10+"点 黄:"+ry/10+"点");
+        rc=Math.round(calory[2]*10);
+        rr=Math.round(red[2]*10);
+        rg=Math.round(green[2]*10);
+        ry=Math.round(yellow[2]*10);
         TextView textView3 = (TextView) findViewById(R.id.textView3);
-        textView3.setText("合計:"+money[2]+"円"+"　カロリー"+calory[2]+"kcal"+"\n"+"赤:"+red[2]+"点 緑:"+green[2]+"点 黄:"+yellow[2]+"点");
+        textView3.setText("合計:"+money[2]+"円"+"　カロリー"+rc/10+"kcal"+"\n"+"赤:"+rr/10+"点 緑:"+rg/10+"点 黄:"+ry/10+"点");
 
     }
 
@@ -349,6 +365,8 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                     yellow[0]+=Double.parseDouble(tmp);
                     tmp=data.getString("red");
                     red[0]+=Double.parseDouble(tmp);
+
+
                     tmp=data.getString("green");
                     green[1]=Double.parseDouble(tmp);
                     tmp=data.getString("yellow");
