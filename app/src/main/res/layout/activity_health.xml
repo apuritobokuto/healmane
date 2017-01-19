@@ -5,23 +5,32 @@
     android:weightSum="1">
 
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/RChart"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_weight="0.40" />
+        android:layout_height="match_parent"
+        android:layout_weight="0.40">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/GChart"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_weight="0.40" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/YChart"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_weight="0.40" />
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/RChart"
+                android:layout_height="167dp"
+                android:layout_width="391dp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/GChart"
+                android:layout_width="match_parent"
+                android:layout_height="172dp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/YChart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
 
 </LinearLayout>
