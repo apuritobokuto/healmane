@@ -84,6 +84,13 @@
                 android:id="@+id/textlist1" />
 
         </LinearLayout>
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1" />
+
         <Button
             android:text="決定"
             android:layout_width="match_parent"
@@ -126,6 +133,12 @@
 
         </LinearLayout>
 
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2" />
+
         <Button
             android:text="決定"
             android:layout_width="match_parent"
@@ -166,6 +179,12 @@
                 android:id="@+id/textlist3" />
 
         </LinearLayout>
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3" />
 
         <Button
             android:text="決定"
