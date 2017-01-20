@@ -23,7 +23,7 @@ import android.content.DialogInterface;
 
 public class cl_setting extends Activity implements RadioGroup.OnCheckedChangeListener {
     private RadioGroup _radioGroup;
-
+    private final cl_setting self = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,21 +38,17 @@ public class cl_setting extends Activity implements RadioGroup.OnCheckedChangeLi
             }
         });
 
-        Button hozon = (Button) findViewById(R.id.hozon);
-        hozon.setOnClickListener(new View.OnClickListener() {
+
+        _radioGroup = (RadioGroup) findViewById(R.id.RadioGroup1);
+        _radioGroup.setOnCheckedChangeListener(this);
+
+        findViewById(R.id.hozon).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(getApplication(), MainActivity.class);
                 startActivity(intent);
             }
         });
-
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
-        _radioGroup = (RadioGroup) findViewById(R.id.RadioGroup1);
-        _radioGroup.setOnCheckedChangeListener(this);
-
 
 
     }
@@ -76,11 +72,10 @@ public class cl_setting extends Activity implements RadioGroup.OnCheckedChangeLi
         if (arg0 == _radioGroup) {
             switch (arg1) {
                 case R.id.checkBox42:
-                   // if(Open1==8 && Open2==30) //8
-                     //   {
+
                         AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
                         alertDlg.setTitle("Helmane");
-                        alertDlg.setMessage("閉店時間30分前になりました。");
+                        alertDlg.setMessage("閉店時間30分前に通知を行います。");
                         alertDlg.setPositiveButton(
                                 "OK",
                                 new DialogInterface.OnClickListener() {
@@ -90,7 +85,8 @@ public class cl_setting extends Activity implements RadioGroup.OnCheckedChangeLi
                                 });
                         // 表示
                         alertDlg.create().show();
-                    //}
+                    startService(new Intent(self, TimerIntentService.class));
+                    //onHandleIntent処理へ飛ばす。onHandleIntentでは5秒後に通知を行うように設定してある
                     break;
                 case R.id.checkBox43:
                     break;

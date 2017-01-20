@@ -3,8 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -142,7 +140,7 @@
                 </RadioGroup>
             </TableRow>
         </TableLayout>
-    </LinearLayout>>
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -186,7 +184,7 @@
                 </RadioGroup>
             </TableRow>
         </TableLayout>
-    </LinearLayout>>
+    </LinearLayout>
 
     <Button
         android:text="保存"
