@@ -71,7 +71,23 @@
             android:label="アレルギー設定">
         </activity>
 
+        <service
+            android:name=".TimerIntentService" />
+        <receiver
+            android:name=".TimerReceiver">
+            <intent-filter>
+                <action android:name="TIMER_FINISHED" />
+            </intent-filter>
+        </receiver>
 
+
+        <activity
+            android:name=".AlertDialogActivity"
+            android:theme="@style/Translucent"
+            android:launchMode="singleInstance">
+        </activity>
     </application>
+
+
 
 </manifest>
