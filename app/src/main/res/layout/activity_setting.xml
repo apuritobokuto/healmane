@@ -30,24 +30,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1">
-
-        <CheckBox
+    <RadioGroup>
+        <RadioButton
             android:text="男"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox40"
             android:layout_weight="0.5"/>
 
-        <CheckBox
+        <RadioButton
             android:text="女"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox41"
             android:layout_weight="0.5"/>
+    </RadioGroup>
     </TableRow>
     </TableLayout>
-    </LinearLayout>>
-
+    </LinearLayout>
     <Button
         android:text="アレルギー設定"
         android:layout_width="match_parent"
@@ -79,24 +79,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="1">
-
-                <CheckBox
+                <RadioGroup
+                    android:id="@+id/RadioGroup1">
+                <RadioButton
                     android:text="30分前"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/checkBox42"
                     android:layout_weight="0.5"/>
 
-                <CheckBox
+                <RadioButton
                     android:text="オフ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/checkBox43"
                     android:layout_weight="0.5"/>
+                </RadioGroup>
             </TableRow>
         </TableLayout>
     </LinearLayout>
-    >
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -123,20 +125,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="1">
-
-                <CheckBox
+                <RadioGroup>
+                <RadioButton
                     android:text="30分前"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/checkBox44"
                     android:layout_weight="0.5"/>
 
-                <CheckBox
+                <RadioButton
                     android:text="オフ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/checkBox45"
                     android:layout_weight="0.5"/>
+                </RadioGroup>
             </TableRow>
         </TableLayout>
     </LinearLayout>>
@@ -166,20 +169,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="1">
-
-                <CheckBox
+                <RadioGroup>
+                <RadioButton
                     android:text="30分前"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/checkBox46"
                     android:layout_weight="0.5"/>
 
-                <CheckBox
+                <RadioButton
                     android:text="オフ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/checkBox47"
                     android:layout_weight="0.5"/>
+                </RadioGroup>
             </TableRow>
         </TableLayout>
     </LinearLayout>>
