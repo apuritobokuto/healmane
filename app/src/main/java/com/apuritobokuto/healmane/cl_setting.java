@@ -20,9 +20,11 @@ import java.util.TimeZone;
 
 import static android.R.attr.value;
 
+
 /**
  * Created by RyuSato on 2016/12/09.
  */
+
 
 public class cl_setting extends Activity {
     private static final int bid1 = 1;
@@ -127,9 +129,25 @@ public class cl_setting extends Activity {
                 textView.setText(setTime);
             }
         });
+
+
+        _radioGroup = (RadioGroup) findViewById(R.id.RadioGroup1);
+        _radioGroup.setOnCheckedChangeListener(this);
+
+        findViewById(R.id.hozon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
+
 
     private void close() {
         finish();
+
     }
 }
