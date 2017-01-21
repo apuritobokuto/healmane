@@ -3,7 +3,7 @@
     package="com.apuritobokuto.healmane">
     
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/test"
@@ -70,6 +70,12 @@
         <activity android:name=".cl_settingsAllergy"
             android:label="アレルギー設定">
         </activity>
+
+
+        <receiver android:name="AlarmReceiver"
+            android:process=":remote" />
+
+        <service android:name="AlarmService" />
 
         <service
             android:name=".TimerIntentService" />
