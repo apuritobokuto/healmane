@@ -1,194 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    tools:context=".MainActivity"
+    android:weightSum="1">
 
-        <TextView
-            android:text="性別"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/textView20"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <TableRow
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1">
-    <RadioGroup>
-        <RadioButton
-            android:text="男"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox40"
-            android:layout_weight="0.5"/>
+        android:layout_weight="1">
 
-        <RadioButton
-            android:text="女"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox41"
-            android:layout_weight="0.5"/>
-    </RadioGroup>
-    </TableRow>
-    </TableLayout>
-    </LinearLayout>
-    <Button
-        android:text="アレルギー設定"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/setalle" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="閉店時のお知らせ"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/textView21"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TableLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <TableRow
+            <Button
+
+                android:id="@+id/button1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="1">
-                <RadioGroup
-                    android:id="@+id/RadioGroup1">
-                <RadioButton
-                    android:text="30分前"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox42"
-                    android:layout_weight="0.5"/>
+                android:layout_height="75dp"
+                android:textSize="20sp"
+                android:text="営業開始時間アラーム" />
 
-                <RadioButton
-                    android:text="オフ"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox43"
-                    android:layout_weight="0.5"/>
-                </RadioGroup>
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
+            <Button
 
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="開店時のお知らせ"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/textView22"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TableLayout
+            android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:layout_height="75dp"
+            android:textSize="20sp"
+            android:text="営業開始時間アラーム解除"
+                android:layout_weight="0.26"/>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="1">
-                <RadioGroup>
-                <RadioButton
-                    android:text="30分前"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox44"
-                    android:layout_weight="0.5"/>
+            <Button
 
-                <RadioButton
-                    android:text="オフ"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox45"
-                    android:layout_weight="0.5"/>
-                </RadioGroup>
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="ポイント２倍時のお知らせ"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/textView23"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TableLayout
+            android:id="@+id/button3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:layout_height="75dp"
+            android:textSize="20sp"
+            android:text="営業終了時間アラーム"
+                android:layout_weight="0.26" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="1">
-                <RadioGroup>
-                <RadioButton
-                    android:text="30分前"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox46"
-                    android:layout_weight="0.5"/>
+            <Button
 
-                <RadioButton
-                    android:text="オフ"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox47"
-                    android:layout_weight="0.5"/>
-                </RadioGroup>
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+                android:layout_height="75dp"
+            android:textSize="20sp"
+            android:text="営業終了時間アラーム解除"
+                android:layout_weight="0.26"/>
 
-    <Button
-        android:text="保存"
+            <Button
+
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+                android:layout_height="75dp"
+            android:textSize="20sp"
+            android:text="ポイント二倍時間アラーム（午前）"
+                android:layout_weight="0.26" />
+
+            <Button
+
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+                android:layout_height="75dp"
+            android:textSize="20sp"
+            android:text="ポイント二倍時間アラーム解除\n（午前）"
+                android:layout_weight="0.26" />
+
+            <Button
+
+            android:id="@+id/button7"
+            android:layout_width="match_parent"
+                android:layout_height="75dp"
+            android:textSize="20sp"
+            android:text="ポイント二倍時間アラーム（午後）" android:layout_weight="0.26"/>
+
+            <Button
+        android:id="@+id/button8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/hozon" />
+                android:layout_height="75dp"
+        android:textSize="20sp"
+        android:text="ポイント二倍時間アラーム解除\n（午後）"
+                android:layout_weight="0.26"/>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
