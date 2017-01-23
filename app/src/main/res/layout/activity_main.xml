@@ -67,12 +67,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <Button
-                android:text="ヘルプ"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/help"
-                android:layout_weight="1" />
+
 
             <Button
                 android:text="設定"
