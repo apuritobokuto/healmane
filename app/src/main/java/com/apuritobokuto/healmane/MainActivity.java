@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+/*
         Button help =(Button)findViewById(R.id.help);
         help.setOnClickListener(new OnClickListener() {
             @Override
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+*/
 
 
 
