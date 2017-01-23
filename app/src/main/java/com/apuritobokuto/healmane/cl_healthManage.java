@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -102,11 +101,6 @@ public class cl_healthManage extends AppCompatActivity {
             RLineChart.setBackgroundColor(Color.WHITE);
             GLineChart.setBackgroundColor(Color.WHITE);
             YLineChart.setBackgroundColor(Color.WHITE);
-
-            //アニメーション
-            RLineChart.animateXY(2000, 2000, Easing.EasingOption.EaseInBack, Easing.EasingOption.EaseInBounce);
-            GLineChart.animateXY(2000, 2000, Easing.EasingOption.EaseInBack, Easing.EasingOption.EaseInBounce);
-            YLineChart.animateXY(2000, 2000, Easing.EasingOption.EaseInBack, Easing.EasingOption.EaseInBounce);
 
             loopCounter++; //ループカウンター
 
