@@ -1,54 +1,33 @@
 package com.apuritobokuto.healmane;
 
 
-/*public class cl_menuSelect_Choice extends AppCompatActivity implements View.OnClickListener {*/
 
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.ImageLoader;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
-
-/*public class cl_menuSelect_Choice extends AppCompatActivity implements View.OnClickListener {*/
 public class cl_information extends AppCompatActivity {
-    //private Button readButton;
 
-    private String imgurl;
-    private ImageLoader imageLoader;
-
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
+        //レイアウトで指定したWebViewのIDを指定する。
+        WebView myWebView = (WebView)findViewById(R.id.webView1);
 
+        //リンクをタップしたときに標準ブラウザを起動させない
+        myWebView.setWebViewClient(new WebViewClient());
+
+        //最初にgoogleのページを表示する。
+        myWebView.loadUrl("http://10.0.2.2/apuritobokuto/androidphp/pdfjs-1/web/viewer.html?file=../../../image/info.pdf");
+
+        //jacascriptを許可する
+        myWebView.getSettings().setJavaScriptEnabled(true);
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //サーバーからデータを読み込む
-        imageload();
-    }
-
-
-    /*Volleyを起動データがあれば読み込みを開始*/
-
-
-    private void imageload() {
-
-            imgurl = "http://10.0.2.2/apuritobokuto/androidphp/test.png";
-            RequestQueue qu = Volley.newRequestQueue(getApplicationContext());
-            imageLoader = new ImageLoader(qu, new JpgCache());
-            NetworkImageView infoimage = (NetworkImageView) findViewById(R.id.infoimage);
-            //infoimage.setErrorImageResId(errorImageResId);
-            infoimage.setImageUrl(imgurl, new ImageLoader(qu, new JpgCache()));
-            infoimage.setErrorImageResId(R.mipmap.error);
-
-    }
 
 
 

@@ -4,11 +4,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
-    <com.android.volley.toolbox.NetworkImageView
-        android:id="@+id/infoimage"
 
+    <WebView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_weight="0.9" />
-
+        android:layout_height="match_parent"
+        android:id="@+id/webView1" />
 </LinearLayout>
