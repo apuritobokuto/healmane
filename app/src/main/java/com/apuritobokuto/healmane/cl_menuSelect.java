@@ -90,7 +90,7 @@ public class cl_menuSelect extends AppCompatActivity {
         System.out.println("cal後");
 
         today = new Date();
-        dateformat = new SimpleDateFormat("yyMMdd");
+        dateformat = new SimpleDateFormat("MMdd");
         dtmp=dateformat.format(today);
         System.out.println("date:"+dtmp);
 
