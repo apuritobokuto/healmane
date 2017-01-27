@@ -81,6 +81,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
 
     private SimpleDateFormat dateformat;
     private static final String dkey="date";
+    private int test =0;
 
 
 
@@ -126,7 +127,7 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
 
 
         SharedPreferences check = PreferenceManager.getDefaultSharedPreferences(getApplication());
-        if(dtmp.equals(check.getString("date",null))) {
+        if(test==0&&dtmp.equals(check.getString("date",null))) {
             Toast.makeText(getApplication(),"本日は登録済みです。",Toast.LENGTH_LONG).show();
             Button button = (Button) findViewById(R.id.proposaldecide1);
             button.setText("本日登録済み");
@@ -173,7 +174,11 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplication(), MainActivity.class);
                     savedate();
-                    insertdb(dtmp, red[0], yellow[0], green[0]);
+                    double rr,rg,ry;
+                    rr=Math.round(red[0]*10);
+                    rg=Math.round(green[0]*10);
+                    ry=Math.round(yellow[0]*10);
+                    insertdb(dtmp, rr/10, ry/10, rg/10);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 
@@ -186,7 +191,11 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplication(), MainActivity.class);
                     savedate();
-                    insertdb(dtmp, red[1], yellow[1], green[1]);
+                    double rr,rg,ry;
+                    rr=Math.round(red[1]*10);
+                    rg=Math.round(green[1]*10);
+                    ry=Math.round(yellow[1]*10);
+                    insertdb(dtmp, rr/10, ry/10, rg/10);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 
@@ -201,7 +210,12 @@ public class cl_proposalSelect_Result extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplication(), MainActivity.class);
                     savedate();
-                    insertdb(dtmp, red[2], yellow[2], green[2]);
+                    double rr,rg,ry;
+                    rr=Math.round(red[2]*10);
+                    rg=Math.round(green[2]*10);
+                    ry=Math.round(yellow[2]*10);
+                    insertdb(dtmp, rr/10, ry/10, rg/10);
+
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 
