@@ -50,15 +50,19 @@ public class cl_setting extends Activity {
                 // 5秒後に設定
                 int h = calendar.get(Calendar.HOUR_OF_DAY);
                 int y = calendar.get(Calendar.YEAR);
-                int m = calendar.get(Calendar.MONTH);
+                int m = calendar.get(Calendar.MINUTE);
                 int d = calendar.get(Calendar.DATE);
                 System.out.println(y + "+" + m + "+" + d + "h" + h);
-                if(h <= 18 && m <= 30){
-                    calendar.set(y,m,d,18,30,0);
+                if(h <= 11 && m < 30){
+                    calendar.set(Calendar.MINUTE,30);
+                    calendar.set(Calendar.HOUR_OF_DAY,11);
+                System.out.println(y + "+" + m + "+" + d + "+" + calendar.get((Calendar.HOUR_OF_DAY)) + "+" + calendar.get(Calendar.MINUTE) + "+" + calendar.get(Calendar.SECOND));
                 }else {
+                    calendar.set(Calendar.MINUTE,30);
+                    calendar.set(Calendar.HOUR_OF_DAY,11);
                     d = calendar.get(Calendar.DATE) + 1;
-                    calendar.set(y,m,d,18,30,0);
-                    System.out.println(y + "+" + m + "+" + d);
+                    calendar.set(Calendar.DATE,d);
+                    System.out.println(y + "+" + m + "+" + d + "+" + calendar.get((Calendar.HOUR_OF_DAY)) + "+" + calendar.get(Calendar.MINUTE) + "+" + calendar.get(Calendar.SECOND));
                 }
 
                 Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
@@ -105,14 +109,18 @@ public class cl_setting extends Activity {
                 // 過去の時間は即実行されます
                 int h = calendar2.get(Calendar.HOUR_OF_DAY);
                 int y = calendar2.get(Calendar.YEAR);
-                int m = calendar2.get(Calendar.MONTH);
+                int m = calendar2.get(Calendar.MINUTE);
                 int d = calendar2.get(Calendar.DATE);
-                if(h <= 20 && m <= 30){
-                    calendar2.set(y,m,d,20,30,0);
+                if(h <= 20 && m < 30){
+                    calendar2.set(Calendar.MINUTE,30);
+                    calendar2.set(Calendar.HOUR_OF_DAY,20);
+                    System.out.println(y + "+" + m + "+" + d + "+" + calendar2.get((Calendar.HOUR_OF_DAY)) + "+" + calendar2.get(Calendar.MINUTE) + "+" + calendar2.get(Calendar.SECOND));
                 }else {
                     d = calendar2.get(Calendar.DATE) + 1;
-                    calendar2.set(y,m,d,20,30,0);
-                    System.out.println(y + "+" + m + "+" + d);
+                    calendar2.set(Calendar.MINUTE,30);
+                    calendar2.set(Calendar.HOUR_OF_DAY,20);
+                    calendar2.set(Calendar.DATE,d);
+                    System.out.println(y + "+" + m + "+" + d + "+" + calendar2.get((Calendar.HOUR_OF_DAY)) + "+" + calendar2.get(Calendar.MINUTE) + "+" + calendar2.get(Calendar.SECOND));
                 }
 
                 Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
@@ -153,14 +161,18 @@ public class cl_setting extends Activity {
                 // 過去の時間は即実行されます
                 int h = calendar2.get(Calendar.HOUR_OF_DAY);
                 int y = calendar2.get(Calendar.YEAR);
-                int m = calendar2.get(Calendar.MONTH);
+                int m = calendar2.get(Calendar.MINUTE);
                 int d = calendar2.get(Calendar.DATE);
-                if(h <= 13){
-                    calendar2.set(y,m,d,13,0,0);
+                if(h < 13){
+                    calendar2.set(Calendar.MINUTE,0);
+                    calendar2.set(Calendar.HOUR_OF_DAY,13);
+                    System.out.println(y + "+" + m + "+" + d + "+" + calendar2.get((Calendar.HOUR_OF_DAY)) + "+" + calendar2.get(Calendar.MINUTE) + "+" + calendar2.get(Calendar.SECOND));
                 }else {
                     d = calendar2.get(Calendar.DATE) + 1;
-                    calendar2.set(y,m,d,13,0,0);
-                    System.out.println(y + "+" + m + "+" + d);
+                    calendar2.set(Calendar.MINUTE,0);
+                    calendar2.set(Calendar.HOUR_OF_DAY,13);
+                    calendar2.set(Calendar.DATE,d);
+                    System.out.println(y + "+" + m + "+" + d + "+" + calendar2.get((Calendar.HOUR_OF_DAY)) + "+" + calendar2.get(Calendar.MINUTE) + "+" + calendar2.get(Calendar.SECOND));
                 }
 
                 Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
@@ -200,14 +212,18 @@ public class cl_setting extends Activity {
                 // 過去の時間は即実行されます
                 int h = calendar2.get(Calendar.HOUR_OF_DAY);
                 int y = calendar2.get(Calendar.YEAR);
-                int m = calendar2.get(Calendar.MONTH);
+                int m = calendar2.get(Calendar.MINUTE);
                 int d = calendar2.get(Calendar.DATE);
-                if(h <= 19){
-                    calendar2.set(y,m,d,19,0,0);
+                if(h < 19){
+                    calendar2.set(Calendar.MINUTE,0);
+                    calendar2.set(Calendar.HOUR_OF_DAY,19);
+                    System.out.println(y + "+" + m + "+" + d + "+" + calendar2.get((Calendar.HOUR_OF_DAY)) + "+" + calendar2.get(Calendar.MINUTE) + "+" + calendar2.get(Calendar.SECOND));
                 }else {
                     d = calendar2.get(Calendar.DATE) + 1;
-                    calendar2.set(y,m,d,19,0,0);
-                    System.out.println(y + "+" + m + "+" + d);
+                    calendar2.set(Calendar.MINUTE,0);
+                    calendar2.set(Calendar.HOUR_OF_DAY,19);
+                    calendar2.set(Calendar.DATE,d);
+                    System.out.println(y + "+" + m + "+" + d + "+" + calendar2.get((Calendar.HOUR_OF_DAY)) + "+" + calendar2.get(Calendar.MINUTE) + "+" + calendar2.get(Calendar.SECOND));
                 }
 
                 Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
