@@ -100,7 +100,7 @@ public class cl_menuSelect extends AppCompatActivity {
         g=Math.round(g*10);
         y=Math.round(y*10);
 
-        text.setText("合計:"+money+"円"+"　カロリー"+c/10+"kcal"+"\n"+"赤:"+r+"点 緑:"+g+"点 黄:"+y+"点");
+        text.setText("合計:"+money+"円"+"　カロリー"+c/10+"kcal"+"\n"+"赤:"+r/10+"点 緑:"+g/10+"点 黄:"+y/10+"点");
         button1 = (Button) findViewById(R.id.button1);
         button1.setText(global.name1);
         button1.setOnClickListener(new View.OnClickListener() {
